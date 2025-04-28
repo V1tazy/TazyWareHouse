@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CA1CECC0-9AAC-4916-9F6F-E5162CF864D2}|TazyWareHouse.Persistance\\TazyWareHouse.Persistance.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\tazywarehouse.persistance\\tazywarehouse.persistance.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CA1CECC0-9AAC-4916-9F6F-E5162CF864D2}|TazyWareHouse.Persistance\\TazyWareHouse.Persistance.csproj|solutionrelative:tazywarehouse.persistance\\tazywarehouse.persistance.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA1CECC0-9AAC-4916-9F6F-E5162CF864D2}|TazyWareHouse.Persistance\\TazyWareHouse.Persistance.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\tazywarehouse.persistance\\tazywarehousecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA1CECC0-9AAC-4916-9F6F-E5162CF864D2}|TazyWareHouse.Persistance\\TazyWareHouse.Persistance.csproj|solutionrelative:tazywarehouse.persistance\\tazywarehousecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4A35087-66CA-4BCA-B298-56CF5015E917}|..\\TazyWareHouse.Logic\\TazyWareHouse.Logic.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.logic\\tazywarehouse.logic.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TazyWareHouse.Persistance",
+              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Persistance\\TazyWareHouse.Persistance.csproj",
+              "RelativeDocumentMoniker": "TazyWareHouse.Persistance\\TazyWareHouse.Persistance.csproj",
+              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Persistance\\TazyWareHouse.Persistance.csproj",
+              "RelativeToolTip": "TazyWareHouse.Persistance\\TazyWareHouse.Persistance.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-28T16:50:01.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TazyWareHouseContext.cs",
+              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Persistance\\TazyWareHouseContext.cs",
+              "RelativeDocumentMoniker": "TazyWareHouse.Persistance\\TazyWareHouseContext.cs",
+              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Persistance\\TazyWareHouseContext.cs",
+              "RelativeToolTip": "TazyWareHouse.Persistance\\TazyWareHouseContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T16:49:58.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TazyWareHouse.Logic",
+              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Logic\\TazyWareHouse.Logic.csproj",
+              "RelativeDocumentMoniker": "..\\TazyWareHouse.Logic\\TazyWareHouse.Logic.csproj",
+              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Logic\\TazyWareHouse.Logic.csproj",
+              "RelativeToolTip": "..\\TazyWareHouse.Logic\\TazyWareHouse.Logic.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-28T16:49:03.705Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
