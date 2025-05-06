@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TazyWareHouse.Logic")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef925c21e4ee15144a3df5ed5fe36fc37beac9ac")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+40d623bdd65a3f12054d47466e6a2b774d758900")]
 [assembly: System.Reflection.AssemblyProductAttribute("TazyWareHouse.Logic")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TazyWareHouse.Logic")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

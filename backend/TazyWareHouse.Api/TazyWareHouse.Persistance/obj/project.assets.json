@@ -930,6 +930,16 @@
         "build": {
           "buildTransitive/net6.0/_._": {}
         }
+      },
+      "TazyWareHouse.Logic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/TazyWareHouse.Logic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TazyWareHouse.Logic.dll": {}
+        }
       }
     }
   },
@@ -2845,12 +2855,18 @@
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "TazyWareHouse.Logic/1.0.0": {
+      "type": "project",
+      "path": "../../TazyWareHouse.Logic/TazyWareHouse.Logic.csproj",
+      "msbuildProject": "../../TazyWareHouse.Logic/TazyWareHouse.Logic.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "Microsoft.EntityFrameworkCore >= 9.0.4",
-      "Microsoft.EntityFrameworkCore.Tools >= 9.0.4"
+      "Microsoft.EntityFrameworkCore.Tools >= 9.0.4",
+      "TazyWareHouse.Logic >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2884,7 +2900,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Logic\\TazyWareHouse.Logic.csproj": {
+              "projectPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Logic\\TazyWareHouse.Logic.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
