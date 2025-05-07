@@ -2,6 +2,7 @@ import { CATEGORY_LIST } from "@/@libs/data/category";
 import { StringArraySelect } from "./SelectBar";
 import { STATUS_LIST } from "@/@libs/data/status";
 import { SUPLIER_LIST } from "@/@libs/data/suplier";
+import { WAREHOUSE_LIST } from "@/@libs/data/warehouse";
 
 export default function Filter() {
     return (
@@ -17,6 +18,8 @@ export default function Filter() {
           <input placeholder="От" className="w-full" />
           <input placeholder="До" className="w-full" />
         </div>
+
+        <StringArraySelect options={WAREHOUSE_LIST}></StringArraySelect>
 
         <div className="flex gap-2">
           <button type="submit" className="bg-[#5138DF] text-white drop-shadow-2xl rounded flex-1 py-2">

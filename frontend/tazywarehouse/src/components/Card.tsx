@@ -1,9 +1,15 @@
+"use client"
+
 import { ICard } from "@/@libs/models/ICard";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { ReactNode } from "react";
 
 
 export default function Card({ image, title, details}: ICard) {
+
+    const router = useRouter()
+
     return (
       <div
         className="flex items-start self-stretch bg-[#FFFFFF] pt-[13px] pb-[13px] pl-[8px] pr-[8px] rounded-[20px]"
@@ -29,7 +35,11 @@ export default function Card({ image, title, details}: ICard) {
 
 
         <div className="flex flex-col shrink-0 items-center mt-[9px]">
-          <button className="flex items-center justify-center pt-[9px] pb-[9px] px-[20px] rounded-[10px] border-0 bg-[#FFFFFF] text-[#5037DF]">Редактировать</button>
+          <button 
+            className="flex items-center justify-center pt-[9px] pb-[9px] px-[20px] rounded-[10px] border-0 bg-[#FFFFFF] text-[#5037DF]"
+            type="button"
+            onClick={() => router.push("/product/edit/")}
+          >Редактировать</button>
           <button className="flex items-center justify-center pt-[9px] pb-[9px] px-[20px] rounded-[10px] border-0 text-[#FFFFFF] bg-[#5037DF]">Описание</button>
         </div>
       </div>
