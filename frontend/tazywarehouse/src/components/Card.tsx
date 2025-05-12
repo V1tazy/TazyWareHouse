@@ -3,10 +3,9 @@
 import { ICard } from "@/@libs/models/ICard";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ReactNode } from "react";
 
 
-export default function Card({ image, title, details}: ICard) {
+export default function Card({ id, image, title, details}: ICard) {
 
     const router = useRouter()
 
@@ -24,11 +23,13 @@ export default function Card({ image, title, details}: ICard) {
 
         <div className="flex flex-col shrink-0 items-start">
           <h1 className="text-[#000000] text-[20px] mb-[10px]">{title}</h1>
-          {details.map((detail, index) => (
-            <span key={index} className="text-[#000000] text-[12px] mb-[10px]">
-              {detail.label}: {detail.value}
-            </span>
-          ))}
+          <div className="grid grid-cols-2 gap-x-4 gap-y-2 w-full">
+            {details.map((detail, index) => (
+              <span key={index} className="text-[#000000] text-[12px]">
+                {detail.label}: {detail.value}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div className="flex-1 self-stretch" />
@@ -38,7 +39,7 @@ export default function Card({ image, title, details}: ICard) {
           <button 
             className="flex items-center justify-center pt-[9px] pb-[9px] px-[20px] rounded-[10px] border-0 bg-[#FFFFFF] text-[#5037DF]"
             type="button"
-            onClick={() => router.push("/product/edit/")}
+            onClick={() => router.push(`/product/edit/${id}`)}
           >Редактировать</button>
           <button className="flex items-center justify-center pt-[9px] pb-[9px] px-[20px] rounded-[10px] border-0 text-[#FFFFFF] bg-[#5037DF]">Описание</button>
         </div>

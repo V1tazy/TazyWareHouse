@@ -9,6 +9,7 @@ export default function CardList({items}: ICardList){
         {items.map((item, index) => (
           <Card
             key={index}
+            id = {item.id}
             image={item.image}
             title={item.title}
             details={item.details}
