@@ -1,6 +1,7 @@
 "use client"
 
 import { signIn } from "next-auth/react"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { FormEvent, FormEventHandler } from "react"
 
@@ -19,6 +20,7 @@ export default function LoginPage(){
     const res = await signIn("credentials", {
       email: formData.get("email"),
       password: formData.get("password"),
+      isRegister: false,
       redirect: false,
     });
 
@@ -39,6 +41,7 @@ export default function LoginPage(){
 
                 <input name="password" placeholder="Введите пароль" type="password" className="p-2 border rounded" required></input>
 
+                <div>У вас нет аккаунта? <Link href="/register" className="text-[#5138DF]">Зарегистрируйте</Link></div>
                 <button type="submit" className="bg-[#5138DF] text-white p-2 rounded hover:bg-[#3a2a9c] transition">Войти</button>
             </form>
         </div>

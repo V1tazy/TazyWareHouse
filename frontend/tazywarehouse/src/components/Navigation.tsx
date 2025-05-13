@@ -13,7 +13,7 @@ type Props = {
 
 const Navigation = ({ navLinks }: Props) => {
   const pathname = usePathname();
-  const { data: session } = useSession();
+  const session = useSession();
 
   console.log(session)
 
@@ -37,13 +37,13 @@ const Navigation = ({ navLinks }: Props) => {
         );
       })}
       
-      {session && (
-        <button
-          onClick={() => signOut({ callbackUrl: "/" })}
-          className="px-4 py-2 text-white/80 hover:text-white ml-4 transition-colors"
-        >
+      {session?.data && <Link href="/profile">Профиль</Link>}
+      {session?.data ? (
+        <Link href="#" onClick={() => signOut({ callbackUrl: "/" })}>
           Выйти
-        </button>
+        </Link>
+      ) : (
+        <Link href="/login">Войти</Link>
       )}
     </nav>
   );

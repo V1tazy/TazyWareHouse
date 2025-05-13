@@ -1,31 +1,37 @@
-import type { AuthOptions, User } from 'next-auth'
-import GoggleProvider from 'next-auth/providers/google'
+// @/config/AuthConfig.ts
+import type { AuthOptions } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
-import { users } from '@/@libs/data/user'
+import { registerUser, loginUser } from '@/services/auth.service'
 
 export const authConfig: AuthOptions = {
   providers: [
     Credentials({
+      name: 'Credentials',
       credentials: {
-        email: { label: 'email', type: 'email', required: true },
-        password: { label: 'password', type: 'password', required: true },
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
+        isRegister: { label: 'IsRegister', type: 'hidden' }
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials.password) return null;
+        if (!credentials?.email || !credentials.password) return null
 
-        const currentUser = users.find(user => user.email === credentials.email)
-
-        if (currentUser && currentUser.password === credentials.password) {
-          const { password, ...userWithoutPass } = currentUser;
-
-          return userWithoutPass as User;
+        try {
+          if (credentials.isRegister === 'true') {
+            return await registerUser(credentials.email, credentials.password)
+          } else {
+            return await loginUser(credentials.email, credentials.password)
+          }
+        } catch (error) {
+          console.error('Authentication error:', error)
+          if (error instanceof Error) {
+            throw new Error(error.message)
+          }
+          throw new Error('Authentication failed')
         }
-
-        return null
       }
     })
   ],
   pages: {
-    signIn: '/signin'
-  }
+    signIn: '/login',
+  },
 }
