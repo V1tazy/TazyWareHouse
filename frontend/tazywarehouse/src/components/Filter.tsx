@@ -5,6 +5,13 @@ import { SUPLIER_LIST } from "@/@libs/data/suplier";
 import { WAREHOUSE_LIST } from "@/@libs/data/warehouse";
 
 export default function Filter() {
+
+
+    const handlerFilterButton = () => {
+      
+    }
+
+
     return (
       <div className="flex flex-col gap-4">
         
@@ -22,7 +29,11 @@ export default function Filter() {
         <StringArraySelect options={WAREHOUSE_LIST}></StringArraySelect>
 
         <div className="flex gap-2">
-          <button type="submit" className="bg-[#5138DF] text-white drop-shadow-2xl rounded flex-1 py-2">
+          <button 
+            type="submit" 
+            className="bg-[#5138DF] text-white drop-shadow-2xl rounded flex-1 py-2"
+            onClick={handlerFilterButton}
+          >
             Применить
           </button>
           <button type="submit" className="bg-white text-[#5138DF] drop-shadow-2xl rounded flex-1 py-2">

@@ -1,10 +1,22 @@
+"use client"
+
 import { CATEGORY_LIST } from "@/@libs/data/category"
 import { MEASUREMENT_LIST } from "@/@libs/data/measurement"
 import { SUPLIER_LIST } from "@/@libs/data/suplier"
 import { WAREHOUSE_LIST } from "@/@libs/data/warehouse"
 import { StringArraySelect } from "@/components/SelectBar"
+import { useRouter } from "next/navigation"
 
 export default function ProductAddPage() {
+
+
+    const handleAddButton = () => {
+        alert('Товар успешно сохранен')
+
+        route.push('/product')
+    }
+
+    const route = useRouter()
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
             <h1 className="text-2xl font-bold text-gray-800 mb-6">Добавление нового товара</h1>
@@ -55,12 +67,14 @@ export default function ProductAddPage() {
                     <button 
                         type="button"
                         className="px-4 py-2 border border-[#5138DF] text-[#5138DF] rounded-md hover:bg-gray-50 transition-colors"
+                        onClick={() => route.push("/product")}
                     >
                         Отменить
                     </button>
                     <button 
                         type="submit"
                         className="px-4 py-2 bg-[#5138DF] text-white rounded-md hover:bg-[#3d2bb3] transition-colors"
+                        onClick={handleAddButton}
                     >
                         Создать товар
                     </button>

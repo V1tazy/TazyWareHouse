@@ -5,9 +5,18 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 
-export default function Card({ id, image, title, details}: ICard) {
+export default function Card({ id, image, title, details, type}: ICard) {
 
     const router = useRouter()
+
+
+    const CardEditHandler = () => {
+      router.push(type?.toLowerCase() === "оборудование" ? `/equipment/edit/${id}` : `/product/edit/${id}`)
+    }
+
+    const CardAboutHandler = () => {
+      router.push(type?.toLowerCase() === "оборудование" ? `/equipment/about/${id}` : `/product/about/${id}`)
+    }
 
     return (
       <div
@@ -39,9 +48,10 @@ export default function Card({ id, image, title, details}: ICard) {
           <button 
             className="flex items-center justify-center pt-[9px] pb-[9px] px-[20px] rounded-[10px] border-0 bg-[#FFFFFF] text-[#5037DF]"
             type="button"
-            onClick={() => router.push(`/product/edit/${id}`)}
-          >Редактировать</button>
-          <button className="flex items-center justify-center pt-[9px] pb-[9px] px-[20px] rounded-[10px] border-0 text-[#FFFFFF] bg-[#5037DF]">Описание</button>
+            onClick={CardEditHandler}> Редактировать </button>
+          <button className="flex items-center justify-center pt-[9px] pb-[9px] px-[20px] rounded-[10px] border-0 text-[#FFFFFF] bg-[#5037DF]"
+            onClick={CardAboutHandler}  
+          >Описание</button>
         </div>
       </div>
     );

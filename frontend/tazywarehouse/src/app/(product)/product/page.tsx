@@ -1,10 +1,15 @@
+"use client"
+
 import { PRODUCT_LIST } from "@/@libs/data/products";
 import CardList from "@/components/CardList";
 import Filter from "@/components/Filter";
 import PaginationBar from "@/components/PaginationBar";
 import SearchBar from "@/components/SearchBar";
+import { useRouter } from "next/navigation";
 
 export default function ProductPage() {
+
+    const route = useRouter()
     return (
         <div className="flex flex-col bg-[#FFFFFF] min-h-screen pt-10">
             <SearchBar></SearchBar>
@@ -13,7 +18,7 @@ export default function ProductPage() {
                 <Filter></Filter>
                 <div className="flex-1">
                     <CardList items={PRODUCT_LIST}/>
-                    
+
                 </div>
             </div>
 

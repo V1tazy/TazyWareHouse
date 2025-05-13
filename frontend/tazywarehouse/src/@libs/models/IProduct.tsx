@@ -1,14 +1,10 @@
+import { IProductEntity } from "./Base/IProductEntity";
 
 
 
-export interface IProduct{
-        id: number;
-        title: string;
-        category: string;
+export interface IProduct extends IProductEntity{
         supplier: string;
         quantity: number;
         measurement: string;
         warehouse: string;
 }
-
-

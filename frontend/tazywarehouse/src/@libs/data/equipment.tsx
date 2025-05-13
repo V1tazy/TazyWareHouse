@@ -1,45 +1,38 @@
-import { IProduct } from "../models/IProduct"
+import { IEquipment } from "../models/IEquipment";
 
 
 
 
-export function getProductById(id: number){
-  return PRODUCT_LIST.find(product => product.id === id)
+export async function AddEquipment(equipment: IEquipment) {
+    
+    return false
 }
 
 
-export async function addProduct(Product: IProduct){
+export async function EditEquipment(equipment:IEquipment) {
 
-  // здесь будет реализация добавления товара в апишку
+    return false
+}
+
+export async function DeleteEquipment(id: number) {
+
+    return false
 }
 
 
-export async function EditProduct(Product: IProduct){
-
-  // реализация апишки редактирования
-}
-
-
-export async function DeleteProduct(id: number){
- // реализация апишки удаления
-}
-
-
-
-
-export const PRODUCT_LIST = [
+export const EQUIPMENT_LIST = [
     {
         id: 1,
         image: '/plug_img.png',
-        title: 'Шурупы 10х10',
+        title: 'Компьютер',
         details: [
-          { label: 'Категория', value: 'Электроника' },
-          { label: 'Вид измерения', value: 'шт' },
-          { label: 'Склад', value: 'Центральный' },
-          { label: 'Статус', value: 'В наличии' },
+          { label: 'Тип оборудования', value: 'Электроника' },
+          { label: 'Серийный номер', value: 'шт' },
+          { label: '', value: 'Центральный' },
+          { label: 'Статус', value: 'Включен' },
           { label: 'Поставщик', value: ''}
         ],
-        type: 'продукт'
+        type: "оборудование"
     },
 
     {
@@ -54,7 +47,7 @@ export const PRODUCT_LIST = [
           { label: 'Поставщик', value: ''}
         ],
 
-        type: 'продукт'
+        type: "оборудование"
     },
 
     {
@@ -68,8 +61,7 @@ export const PRODUCT_LIST = [
         { label: 'Статус', value: 'В наличии' },
         { label: 'Поставщик', value: ''}
       ],
-
-      type: 'продукт'
+      type: "оборудование"
   },
   {
     id: 4,
@@ -82,7 +74,6 @@ export const PRODUCT_LIST = [
       { label: 'Статус', value: 'В наличии' },
       { label: 'Поставщик', value: ''}
     ],
-
-    type: 'продукт'
+      type: "оборудование"
 },
 ]

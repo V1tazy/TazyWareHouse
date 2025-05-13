@@ -13,6 +13,7 @@ export default function CardList({items}: ICardList){
             image={item.image}
             title={item.title}
             details={item.details}
+            type = {item.type}
           />
         ))}
       </div>
