@@ -1,8 +1,8 @@
 
 import React from "react";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Header_Auth from "@/components/Header_Auth";
+import { Header } from "@/components/Header";
+import { Providers } from "@/components/Providers";
 
 
 export default function WorkLayout({
@@ -11,10 +11,10 @@ export default function WorkLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <body>
-        <Header_Auth/>
+        <Providers>
+        <Header></Header>
         {children}
         <Footer></Footer>
-      </body>
+        </Providers>
   );
 }

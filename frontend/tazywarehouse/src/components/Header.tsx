@@ -1,16 +1,19 @@
-import Link from "next/link"
+import { Navigation } from "./Navigation";
 
+const navItems = [
+  { label: 'Главная', href: "/" },
+  { label: "Продукты", href: "/product" },
+  { label: "Профиль", href: "/profile" }
+];
 
+const Header = () => {
+  return (
+    <header className="bg-[#5138DF] text-white flex justify-center items-center py-4">
+      <div className="container flex justify-between items-center px-4">
+        <Navigation navLinks={navItems} />
+      </div>
+    </header>
+  );
+};
 
-export default function Header(){
-    return(
-        <header className="bg-[#5138DF] text-white justify-between">
-            <Link href='/'>Складской учет</Link>
-
-            <div>
-                <Link href='/login'>Войти</Link>
-                <Link href ='/register'>Зарегистироваться</Link>
-            </div>
-        </header>
-    )
-}
+export { Header };

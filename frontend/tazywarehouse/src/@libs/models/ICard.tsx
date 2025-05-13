@@ -1,10 +1,9 @@
+import { IEntity } from "./Base/IEntity";
 
 
 
-export interface ICard{
-    id: number
+export interface ICard extends IEntity{
     image? : string
-    title: string
     details: {label: string; value: string}
     type: string
 }
