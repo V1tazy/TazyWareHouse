@@ -1,11 +1,11 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { Table } from "@/components/Table/Table";
 import { documentColumns } from "@/config/TableConfig/DocumentConfig";
 import { Pagination } from "@/components/Pagination/Pagination";
 import { Filters } from "@/components/Filters/Filters";
-import { useFiltering } from "@/hooks/useFiltering";
 
 const mockDocuments = [
   { id: 1, name: "Счет №001", type: "Счет", status: "Черновик", createdAt: "2025-05-01", responsible: "Иван Петров" },
@@ -15,24 +15,31 @@ const mockDocuments = [
 ];
 
 export default function DocumentPage() {
-  const {
-    searchTerm,
-    setSearchTerm,
-    typeFilter,
-    setTypeFilter,
-    statusFilter,
-    setStatusFilter,
-    currentPage,
-    paginatedData: paginatedDocuments,
-    totalPages,
-    handlePageChange,
-  } = useFiltering({
-    data: mockDocuments,
-    searchFields: ["name", "responsible"],
-    initialStatusFilter: "Все",
-    initialTypeFilter: "Все",
-    itemsPerPage: 5,
+  const [searchTerm, setSearchTerm] = useState("");
+  const [typeFilter, setTypeFilter] = useState("Все");
+  const [statusFilter, setStatusFilter] = useState("Все");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const filteredDocuments = mockDocuments.filter((document) => {
+    const matchesSearch = document.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      document.responsible.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesType = typeFilter === "Все" || document.type === typeFilter;
+    const matchesStatus = statusFilter === "Все" || document.status === statusFilter;
+    return matchesSearch && matchesType && matchesStatus;
   });
+
+  const totalPages = Math.ceil(filteredDocuments.length / itemsPerPage);
+  const paginatedDocuments = filteredDocuments.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
 
   const typeOptions = [
     { value: "Все", label: "Все типы" },

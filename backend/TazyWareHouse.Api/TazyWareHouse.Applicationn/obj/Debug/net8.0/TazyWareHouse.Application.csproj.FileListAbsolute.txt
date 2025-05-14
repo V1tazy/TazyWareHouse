@@ -1,0 +1,16 @@
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\bin\Debug\net8.0\TazyWareHouse.Application.deps.json
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\bin\Debug\net8.0\TazyWareHouse.Application.dll
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\bin\Debug\net8.0\TazyWareHouse.Application.pdb
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\bin\Debug\net8.0\TazyWareHouse.Core.dll
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\bin\Debug\net8.0\TazyWareHouse.Core.pdb
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\obj\Debug\net8.0\TazyWareHouse.Application.csproj.AssemblyReference.cache
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\obj\Debug\net8.0\TazyWareHouse.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\obj\Debug\net8.0\TazyWareHouse.Application.AssemblyInfoInputs.cache
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\obj\Debug\net8.0\TazyWareHouse.Application.AssemblyInfo.cs
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\obj\Debug\net8.0\TazyWareHouse.Application.csproj.CoreCompileInputs.cache
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\obj\Debug\net8.0\TazyWareHouse.Application.sourcelink.json
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\obj\Debug\net8.0\TazyWare.351FA461.Up2Date
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\obj\Debug\net8.0\TazyWareHouse.Application.dll
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\obj\Debug\net8.0\refint\TazyWareHouse.Application.dll
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\obj\Debug\net8.0\TazyWareHouse.Application.pdb
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Applicationn\obj\Debug\net8.0\ref\TazyWareHouse.Application.dll

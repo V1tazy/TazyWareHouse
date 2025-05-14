@@ -25,10 +25,10 @@ export const officeColumns: ColumnConfig[] = [
     header: "Действия",
     render: (_, row) => (
       <div className="flex gap-2">
-        <Link href={`/offices/${row.id}`} className="text-blue-500 hover:text-blue-600">
+        <Link href={`/office/${row.id}`} className="text-blue-500 hover:text-blue-600">
           Просмотр
         </Link>
-        <Link href={`/offices/${row.id}/equipment`} className="text-blue-500 hover:text-blue-600">
+        <Link href={`/office/${row.id}/equipment`} className="text-blue-500 hover:text-blue-600">
           Управление оборудованием
         </Link>
       </div>

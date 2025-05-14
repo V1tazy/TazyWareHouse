@@ -1,0 +1,6 @@
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Persistance\obj\Debug\net8.0\TazyWareHouse.Persistance.csproj.AssemblyReference.cache
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Persistance\obj\Debug\net8.0\TazyWareHouse.Persistance.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Persistance\obj\Debug\net8.0\TazyWareHouse.Persistance.AssemblyInfoInputs.cache
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Persistance\obj\Debug\net8.0\TazyWareHouse.Persistance.AssemblyInfo.cs
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Persistance\obj\Debug\net8.0\TazyWareHouse.Persistance.csproj.CoreCompileInputs.cache
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.Persistance\obj\Debug\net8.0\TazyWareHouse.Persistance.sourcelink.json
