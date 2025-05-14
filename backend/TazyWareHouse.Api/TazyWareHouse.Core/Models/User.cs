@@ -6,19 +6,20 @@ using System.Threading.Tasks;
 
 namespace TazyWareHouse.Core.Models
 {
-    internal class User
+    public class User
     {
-        public int Id { get; set; }
+        Guid ID { get; set; }
 
-        public string Login { get; set; }
+        public string Email { get; set; }
 
-        public string HashPassword { get; set; }
+        public string HashedPassword { get; set; }
 
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
 
-        public string Pathronyc {  get; set; }
+        public string Role { get; set; }
 
+        public string PhoneNumber { get; set; }
     }
 }

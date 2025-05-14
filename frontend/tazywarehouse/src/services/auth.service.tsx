@@ -1,50 +1,37 @@
-import type { User } from 'next-auth'
+import { User } from "next-auth";
 
+const API_URL = 'http://localhost:5149/api/auth'; // Замените на ваш URL бэкенда
 
-const users = [
-    {
-        id: "1",
-        email: "vitazyq@gmail.com",
-        name: "vitazy",
-        password: "12345",
-        role: "admin"
-    }
-]
+export async function registerUser(email: string, password: string): Promise<Omit<User, 'password'>> {
+    const response = await fetch(`${API_URL}/register`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+    });
 
-
-export async function registerUser(email: string, password: string): Promise<Omit<User, 'password'>>{
-
-    const existingUser = users.find(user => user.email === email)
-    
-    if(existingUser){
-        throw new Error("User already exist")
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Registration failed');
     }
 
-    const newUser = {
-        id: String(users.length + 1),
-        email,
-        password
-    }
-
-    users.push(newUser)
-
-    const {password: _, ...userWithoutPass} = newUser
-
-    return userWithoutPass
+    return await response.json();
 }
 
 export async function loginUser(email: string, password: string): Promise<Omit<User, 'password'> | null> {
+    const response = await fetch(`${API_URL}/login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+    });
 
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Login failed');
+    }
 
-    const user = users.find(user => user.email === email)
-
-    if(!user) return null
-
-
-    if(user.password !== password) return null
-
-    const { password: _, ...userWithoutPass} = user
-
-
-    return userWithoutPass
+    return await response.json();
 }

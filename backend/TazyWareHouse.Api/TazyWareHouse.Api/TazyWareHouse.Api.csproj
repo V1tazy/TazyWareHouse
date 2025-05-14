@@ -11,7 +11,6 @@
   <ItemGroup>
     <ProjectReference Include="..\TazyWareHouse.Application\TazyWareHouse.Application.csproj" />
     <ProjectReference Include="..\TazyWareHouse.Core\TazyWareHouse.Core.csproj" />
-    <ProjectReference Include="..\TazyWareHouse.Infrastructure\TazyWareHouse.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

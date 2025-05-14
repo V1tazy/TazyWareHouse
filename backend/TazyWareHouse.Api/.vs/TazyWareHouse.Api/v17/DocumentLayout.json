@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4A882996-FF06-468D-A799-B98AEC4C736C}|TazyWareHouse.Core\\TazyWareHouse.Core.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\tazywarehouse.core\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4A882996-FF06-468D-A799-B98AEC4C736C}|TazyWareHouse.Core\\TazyWareHouse.Core.csproj|solutionrelative:tazywarehouse.core\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TaztWareHouse.Api.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\taztwarehouse.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TaztWareHouse.Api.csproj|solutionrelative:taztwarehouse.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36D98ED9-4FFC-4AC5-98E0-8E9F574DE0DF}|TazyWareHouse.Api\\TazyWareHouse.Api.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\tazywarehouse.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36D98ED9-4FFC-4AC5-98E0-8E9F574DE0DF}|TazyWareHouse.Api\\TazyWareHouse.Api.csproj|solutionrelative:tazywarehouse.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TazyWareHouse.Api.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\taztwarehouse.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TazyWareHouse.Api.csproj|solutionrelative:taztwarehouse.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{460B3E09-6BDE-4C82-A1AB-FEE3933F8542}|TazyWareHouse.Application\\TazyWareHouse.Application.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\tazywarehouse.application\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{460B3E09-6BDE-4C82-A1AB-FEE3933F8542}|TazyWareHouse.Application\\TazyWareHouse.Application.csproj|solutionrelative:tazywarehouse.application\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TazyWareHouse.Api.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\taztwarehouse.api\\tazywarehouse.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TazyWareHouse.Api.csproj|solutionrelative:taztwarehouse.api\\tazywarehouse.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TaztWareHouse.Api.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\taztwarehouse.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TaztWareHouse.Api.csproj|solutionrelative:taztwarehouse.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Product.cs",
-              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\Models\\Product.cs",
-              "RelativeDocumentMoniker": "TazyWareHouse.Core\\Models\\Product.cs",
-              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\Models\\Product.cs",
-              "RelativeToolTip": "TazyWareHouse.Core\\Models\\Product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "TaztWareHouse.Api\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "TaztWareHouse.Api\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAiwF0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T08:47:47.988Z",
+              "WhenOpened": "2025-05-14T16:27:02.781Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IProductRepository.cs",
-              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Application\\IProductRepository.cs",
-              "RelativeDocumentMoniker": "TazyWareHouse.Application\\IProductRepository.cs",
-              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Application\\IProductRepository.cs",
-              "RelativeToolTip": "TazyWareHouse.Application\\IProductRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T08:47:45.418Z",
+              "Title": "TazyWareHouse.Api.csproj",
+              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\TazyWareHouse.Api.csproj",
+              "RelativeDocumentMoniker": "TaztWareHouse.Api\\TazyWareHouse.Api.csproj",
+              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\TazyWareHouse.Api.csproj",
+              "RelativeToolTip": "TaztWareHouse.Api\\TazyWareHouse.Api.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-14T16:17:34.281Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "TaztWareHouse.Api\\appsettings.json",
+              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\appsettings.json",
+              "RelativeToolTip": "TaztWareHouse.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-14T16:17:27.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Api\\Program.cs",
-              "RelativeDocumentMoniker": "TazyWareHouse.Api\\Program.cs",
-              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Api\\Program.cs",
-              "RelativeToolTip": "TazyWareHouse.Api\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAzAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\Program.cs",
+              "RelativeDocumentMoniker": "TaztWareHouse.Api\\Program.cs",
+              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\Program.cs",
+              "RelativeToolTip": "TaztWareHouse.Api\\Program.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T08:46:03.8Z",
+              "WhenOpened": "2025-05-14T16:17:23.829Z",
               "EditorCaption": ""
             }
           ]
