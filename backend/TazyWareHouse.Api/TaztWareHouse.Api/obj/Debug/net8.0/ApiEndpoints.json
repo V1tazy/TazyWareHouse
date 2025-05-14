@@ -9,11 +9,21 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "TazyWareHouse.Api.Controllers.AuthController\u002BLoginRequest",
+        "Type": "TazyWareHouse.Application.DTOs.UserDTOs.LoginRequest",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "TazyWareHouse.Application.DTOs.UserDTOs.AuthReponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "TazyWareHouse.Api.Controllers.AuthController",
@@ -25,10 +35,20 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "TazyWareHouse.Api.Controllers.AuthController\u002BRegisterRequest",
+        "Type": "TazyWareHouse.Application.DTOs.UserDTOs.RegisterRequest",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "TazyWareHouse.Application.DTOs.UserDTOs.AuthReponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
@@ -15,7 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TazyWareHouse.Applicationn\TazyWareHouse.Application.csproj" />
     <ProjectReference Include="..\TazyWareHouse.Core\TazyWareHouse.Core.csproj" />
+    <ProjectReference Include="..\TazyWareHouse.Infrastructure\TazyWareHouse.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

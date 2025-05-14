@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
+
+using TazyWareHouse.Application.DTOs.UserDTOs;
+
+using TazyWareHouse.Core.Interfaces;
+using TazyWareHouse.Core.Models;
 
 namespace TazyWareHouse.Api.Controllers
 {
@@ -8,87 +11,60 @@ namespace TazyWareHouse.Api.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        // Моковые данные пользователя (в реальном приложении замените на базу данных)
-        private readonly User _mockUser = new User
-        {
-            Id = "1",
-            Email = "vitazyq@gmail.com",
-            Password = "12345", // В реальном приложении используйте хеширование!
-            Name = "vitazy",
-            Role = "admin"
-        };
+        private readonly IAuthService _authService;
+        private readonly ITokenService _tokenService;
 
-        // POST: api/Auth/login
+        public AuthController(IAuthService authService, ITokenService tokenService)
+        {
+            _authService = authService;
+            _tokenService = tokenService;
+        }
+
+
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginRequest request)
+        public async Task<ActionResult<AuthReponse>> Login([FromBody] LoginRequest request)
         {
-            if (request == null || string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.Password))
+            try
             {
-                return BadRequest(new { message = "Email and password are required" });
+                var user = await _authService.LoginAsync(request.Email, request.Password);
+                var token = _tokenService.GenerateToken(user);
+                return Ok(ToAuthResponse(user, token));
             }
 
-            if (request.Email == _mockUser.Email && request.Password == _mockUser.Password)
+            catch (UnauthorizedAccessException ex)
             {
-                var response = new
-                {
-                    _mockUser.Id,
-                    _mockUser.Email,
-                    _mockUser.Name,
-                    _mockUser.Role,
-                    Token = "mock-jwt-token" // В реальном приложении генерируйте JWT
-                };
-
-                return Ok(response);
+                return Unauthorized(new { message = ex.Message });
             }
-
-            return Unauthorized(new { message = "Invalid email or password" });
         }
 
-        // POST: api/Auth/register
+
         [HttpPost("register")]
-        public IActionResult Register([FromBody] RegisterRequest request)
+        public async Task<ActionResult<AuthReponse>> Register([FromBody] RegisterRequest request)
         {
-            if (request == null || string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.Password))
+            try
             {
-                return BadRequest(new { message = "Email and password are required" });
+                var user = await _authService.RegisterAsync(request.Email, request.Password, null, null, null);
+
+                var token = _tokenService.GenerateToken(user);
+
+                return CreatedAtAction(nameof(Login), ToAuthResponse(user, token));
             }
-
-            if (request.Email == _mockUser.Email)
+            catch (InvalidOperationException ex)
             {
-                return Conflict(new { message = "User already exists" });
+                return Conflict(new { message = ex.Message });
             }
-
-            // В реальном приложении здесь была бы логика создания пользователя
-            var response = new
-            {
-                Id = "2",
-                request.Email,
-                Name = request.Email.Split('@')[0],
-                Role = "user",
-                Token = "mock-jwt-token"
-            };
-
-            return Ok(response);
         }
 
-        public class User
+
+        private static AuthReponse ToAuthResponse(User user, string token) => new()
         {
-            public string Id { get; set; }
-            public string Email { get; set; }
-            public string Password { get; set; }
-            public string Name { get; set; }
-            public string Role { get; set; }
-        }
-
-        public class LoginRequest
-        {
-            public string Email { get; set; }
-            public string Password { get; set; }
-        }
-
-        public class RegisterRequest : LoginRequest
-        {
-            // Можно добавить дополнительные поля для регистрации
-        }
+            Id = user.Id,
+            Email = user.Email,
+            FirtsName = user.FirstName,
+            LastName = user.LastName,
+            PhoneNumber = user.PhoneNumber,
+            Role = user.Role,
+            Token = token
+        };
     }
 }
