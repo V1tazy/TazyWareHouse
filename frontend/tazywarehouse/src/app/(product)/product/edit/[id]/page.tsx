@@ -1,17 +1,21 @@
 "use client"
 
-import { CATEGORY_LIST } from "@/@libs/data/category"
-import { MEASUREMENT_LIST } from "@/@libs/data/measurement"
-import { getProductById } from "@/@libs/data/products"
-import { SUPLIER_LIST } from "@/@libs/data/suplier"
-import { WAREHOUSE_LIST } from "@/@libs/data/warehouse"
-import  { IProduct } from "@/@libs/models/IProduct"
-
 import { StringArraySelect } from "@/components/SelectBar"
 import { useParams } from "next/navigation"
 import { useRouter } from "next/navigation"
 import { title } from "process"
 import { useEffect, useState } from "react"
+
+
+const STATUS_LIST = ['Выберите статус']
+
+const CATEGORY_LIST = ['Категория']
+
+const SUPLIER_LIST = ['Поставщики']
+
+const WAREHOUSE_LIST = ['Склады']
+
+
 
 export default function ProductEditPage() {
 

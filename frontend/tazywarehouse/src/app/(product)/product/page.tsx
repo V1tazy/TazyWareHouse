@@ -33,12 +33,12 @@ export default function ProductPage() {
 
   return (
     <div className="min-h-screen p-4 max-w-7xl mx-auto">
-      {/* Заголовок */}
+ 
       <header className="mb-8">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-900">Продукты</h1>
           <Link
-            href="/products/new"
+            href="/product/add"
             className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
           >
             <PlusIcon className="h-5 w-5 mr-2" />
@@ -47,9 +47,9 @@ export default function ProductPage() {
         </div>
       </header>
 
-      {/* Основной контент */}
+ 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        {/* Фильтры */}
+
         <section className="lg:col-span-1 bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold mb-4 flex items-center">
             <span className="w-2 h-6 bg-blue-500 mr-2 rounded-full"></span>
@@ -70,11 +70,6 @@ export default function ProductPage() {
           <CardList items={PRODUCT_LIST} />
         </section>
       </div>
-
-      {/* Пагинация */}
-      <section className="mt-6 flex justify-center gap-2">
-        <PaginationBar />
-      </section>
     </div>
   );
 }
