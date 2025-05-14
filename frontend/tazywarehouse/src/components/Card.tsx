@@ -1,58 +1,62 @@
-"use client"
+"use client"; // Client component for interactivity
 
 import { ICard } from "@/@libs/models/ICard";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
+export default function Card({ id, image, title, details, type }: ICard) {
+  const router = useRouter();
 
-export default function Card({ id, image, title, details, type}: ICard) {
+  const CardEditHandler = () => {
+    router.push(type?.toLowerCase() === "оборудование" ? `/equipment/edit/${id}` : `/product/edit/${id}`);
+  };
 
-    const router = useRouter()
+  const CardAboutHandler = () => {
+    router.push(type?.toLowerCase() === "оборудование" ? `/equipment/about/${id}` : `/product/about/${id}`);
+  };
 
+  return (
+    <div className="flex items-start bg-white rounded-lg shadow p-4">
+      {/* Изображение */}
+      <div className="w-24 h-24 bg-gray-100 rounded-md mr-4 flex items-center justify-center overflow-hidden">
+        <Image
+          src={image}
+          alt={title}
+          width={96}
+          height={96}
+          className="w-full h-full object-cover"
+        />
+      </div>
 
-    const CardEditHandler = () => {
-      router.push(type?.toLowerCase() === "оборудование" ? `/equipment/edit/${id}` : `/product/edit/${id}`)
-    }
-
-    const CardAboutHandler = () => {
-      router.push(type?.toLowerCase() === "оборудование" ? `/equipment/about/${id}` : `/product/about/${id}`)
-    }
-
-    return (
-      <div
-        className="flex items-start self-stretch bg-[#FFFFFF] pt-[13px] pb-[13px] pl-[8px] pr-[8px] rounded-[20px]"
-        style={{
-          boxShadow: '0px 4px 4px #00000040',
-        }}
-      >
-        
-        <div className="w-[100px] h-[100px] bg-[#D9D9D9] rounded-[10px] mr-[20px] flex items-center justify-center">
-            <img src={image} alt={title} className="w-full h-full object-fill" />
-        </div>
-
-        <div className="flex flex-col shrink-0 items-start">
-          <h1 className="text-[#000000] text-[20px] mb-[10px]">{title}</h1>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-2 w-full">
-            {details.map((detail, index) => (
-              <span key={index} className="text-[#000000] text-[12px]">
-                {detail.label}: {detail.value}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex-1 self-stretch" />
-
-
-        <div className="flex flex-col shrink-0 items-center mt-[9px]">
-          <button 
-            className="flex items-center justify-center pt-[9px] pb-[9px] px-[20px] rounded-[10px] border-0 bg-[#FFFFFF] text-[#5037DF]"
-            type="button"
-            onClick={CardEditHandler}> Редактировать </button>
-          <button className="flex items-center justify-center pt-[9px] pb-[9px] px-[20px] rounded-[10px] border-0 text-[#FFFFFF] bg-[#5037DF]"
-            onClick={CardAboutHandler}  
-          >Описание</button>
+      {/* Детали */}
+      <div className="flex flex-col flex-1">
+        <h1 className="text-lg font-semibold text-gray-900 mb-2">{title}</h1>
+        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+          {details.map((detail, index) => (
+            <span key={index} className="text-sm text-gray-500">
+              {detail.label}: {detail.value}
+            </span>
+          ))}
         </div>
       </div>
-    );
-  }
+
+      {/* Кнопки */}
+      <div className="flex flex-col items-center gap-2 ml-4">
+        <button
+          className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          type="button"
+          onClick={CardEditHandler}
+        >
+          Редактировать
+        </button>
+        <button
+          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          type="button"
+          onClick={CardAboutHandler}
+        >
+          Описание
+        </button>
+      </div>
+    </div>
+  );
+}
