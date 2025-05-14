@@ -6,7 +6,10 @@ export default function ProfilePage(){
 
     return(
         <div>
-            Здесь будет профиль
+            <div>Иван Петров</div>
+            <div>+7 (xxx) xxx-xx-xx</div>
+            <div>Warehouse</div>
+            <div>Права доступа</div>
         </div>
     )
 }
