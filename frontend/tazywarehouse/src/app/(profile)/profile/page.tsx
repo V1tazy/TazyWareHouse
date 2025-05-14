@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { PencilIcon, LockClosedIcon, ComputerDesktopIcon, ClockIcon } from "@heroicons/react/24/outline";
+import { User } from "@/data/User";
 
 // Мок-данные пользователя (заменить на API)
 const mockUser = {
@@ -28,31 +29,6 @@ const mockActivity = [
   { id: 2, action: "Переместил оборудование в офис №2", timestamp: "2025-05-13 14:20" },
 ];
 
-// Типы данных
-interface User {
-  id: number;
-  name: string;
-  position: string;
-  phone: string;
-  email: string;
-  photo: string;
-  roles: string[];
-  permissions: string[];
-}
-
-interface Equipment {
-  id: number;
-  name: string;
-  serial: string;
-  assignedDate: string;
-  status: string;
-}
-
-interface Activity {
-  id: number;
-  action: string;
-  timestamp: string;
-}
 
 export default function ProfilePage() {
   // Состояние для настроек и редактирования
