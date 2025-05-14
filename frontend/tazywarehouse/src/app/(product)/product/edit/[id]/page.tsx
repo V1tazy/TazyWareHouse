@@ -35,13 +35,12 @@ export default function ProductEditPage() {
         const foundProduct = getProductById(productId);
         
         if (foundProduct) {
-            setProduct(foundProduct);
-            // Преобразуем данные из PRODUCT_LIST в нужный формат
+            setProduct(foundProduct);т
             setFormData({
             title: foundProduct.title,
             category: foundProduct.details.find(d => d.label === 'Категория')?.value || '',
-            supplier: foundProduct.details.find(d => d.label === 'Склад')?.value || '', // Добавьте поставщика в ваши данные, если нужно
-            quantity: 0, // Добавьте количество в ваши данные
+            supplier: foundProduct.details.find(d => d.label === 'Склад')?.value || '',
+            quantity: 0,
             measurement: foundProduct.details.find(d => d.label === 'Вид измерения')?.value || '',
             warehouse: foundProduct.details.find(d => d.label === 'Склад')?.value || ''
             });

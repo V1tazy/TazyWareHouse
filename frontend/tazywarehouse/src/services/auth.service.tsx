@@ -1,6 +1,15 @@
-import { users } from '@/@libs/data/user'
 import type { User } from 'next-auth'
-import { HashPassword, passwordMatch } from '@/@libs/middleware/hashPassword'
+
+
+const users = [
+    {
+        id: "1",
+        email: "vitazyq@gmail.com",
+        name: "vitazy",
+        password: "12345",
+        role: "admin"
+    }
+]
 
 
 export async function registerUser(email: string, password: string): Promise<Omit<User, 'password'>>{
@@ -11,15 +20,11 @@ export async function registerUser(email: string, password: string): Promise<Omi
         throw new Error("User already exist")
     }
 
-    const hashedPassword = await HashPassword(password)
-
     const newUser = {
         id: String(users.length + 1),
         email,
-        password: hashedPassword
+        password
     }
-
-    console.log(hashedPassword)
 
     users.push(newUser)
 
@@ -35,8 +40,8 @@ export async function loginUser(email: string, password: string): Promise<Omit<U
 
     if(!user) return null
 
-    const hashedMatch = await passwordMatch(password, user.password)
-    if(!passwordMatch) return null
+
+    if(user.password !== password) return null
 
     const { password: _, ...userWithoutPass} = user
 

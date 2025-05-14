@@ -1,13 +1,32 @@
-"use client"; // Client component for interactivity
+"use client";
 
-import { PRODUCT_LIST } from "@/@libs/data/products";
+
 import CardList from "@/components/CardList";
-import Filter from "@/components/Filter";
+import Filter from "@/components/Filters/Filter_Product";
 import PaginationBar from "@/components/PaginationBar";
 import SearchBar from "@/components/SearchBar";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { PlusIcon } from "@heroicons/react/24/outline";
+import { title } from "process";
+
+
+
+const PRODUCT_LIST = [
+  {
+    id: 1,
+    image: '/plug_img.png',
+    title: 'Шуруп',
+    details: [
+      {label: 'Категория', value: 'Строительная'},
+      {label: 'Вид измерения', value: 'Шт'},
+      {label: 'Склад', value: 'Центральный'},
+      {label: 'Поставщик', value: 'Сосальник'}
+    ],
+
+    type: 'Продукт'
+  }
+]
 
 export default function ProductPage() {
   const router = useRouter();
