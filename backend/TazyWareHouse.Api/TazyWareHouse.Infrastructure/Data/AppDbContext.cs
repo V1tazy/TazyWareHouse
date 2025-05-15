@@ -2,10 +2,10 @@
 using TazyWareHouse.Core.Entityes.DashBoard;
 using TazyWareHouse.Core.Entityes.Documents;
 using TazyWareHouse.Core.Entityes.Equipments;
+using TazyWareHouse.Core.Entityes.Offices;
 using TazyWareHouse.Core.Entityes.Products;
 using TazyWareHouse.Core.Entityes.Users;
 using TazyWareHouse.Core.Entityes.Warehouses;
-using TazyWareHouse.Core.Offices;
 
 namespace TazyWareHouse.Infrastructure.Data
 {
@@ -50,6 +50,8 @@ namespace TazyWareHouse.Infrastructure.Data
         public DbSet<Warehouse> Warehouses { get; set; }
 
         public DbSet<Office> Offices { get; set; }
+
+
         public DbSet<WarehousesProductInventory> WarehousesProductInventories { get; set; }
 
         public DbSet<WarehouseEquipmentInventory> WarehouseEquipmentInventories { get; set; }
@@ -64,6 +66,7 @@ namespace TazyWareHouse.Infrastructure.Data
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
+
 
             modelBuilder.Entity<Office>()
                 .HasOne(o => o.Responsible)

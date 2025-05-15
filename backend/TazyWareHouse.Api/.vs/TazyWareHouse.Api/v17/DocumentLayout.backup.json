@@ -3,24 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A5B33506-AEE3-4A09-B59A-5154C9B0F6F4}|TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\tazywarehouse.infrastructure\\migrations\\20250515103126_completearchitecturedb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A5B33506-AEE3-4A09-B59A-5154C9B0F6F4}|TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj|solutionrelative:tazywarehouse.infrastructure\\migrations\\20250515103126_completearchitecturedb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TazyWareHouse.Api.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\taztwarehouse.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TazyWareHouse.Api.csproj|solutionrelative:taztwarehouse.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{67166531-499D-41D3-B3CA-ABDF69177741}|TazyWareHouse.Applicationn\\TazyWareHouse.Application.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\tazywarehouse.applicationn\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{67166531-499D-41D3-B3CA-ABDF69177741}|TazyWareHouse.Applicationn\\TazyWareHouse.Application.csproj|solutionrelative:tazywarehouse.applicationn\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TazyWareHouse.Api.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\taztwarehouse.api\\contracts\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TazyWareHouse.Api.csproj|solutionrelative:taztwarehouse.api\\contracts\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5B33506-AEE3-4A09-B59A-5154C9B0F6F4}|TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\tazywarehouse.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A5B33506-AEE3-4A09-B59A-5154C9B0F6F4}|TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj|solutionrelative:tazywarehouse.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TazyWareHouse.Api.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\taztwarehouse.api\\contracts\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TazyWareHouse.Api.csproj|solutionrelative:taztwarehouse.api\\contracts\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5B33506-AEE3-4A09-B59A-5154C9B0F6F4}|TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\tazywarehouse.infrastructure\\data\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A5B33506-AEE3-4A09-B59A-5154C9B0F6F4}|TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj|solutionrelative:tazywarehouse.infrastructure\\data\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TazyWareHouse.Api.csproj|c:\\users\\89960\\desktop\\tazywarehouse\\backend\\tazywarehouse.api\\taztwarehouse.api\\contracts\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6B7115F-34F0-4075-A097-3A9161C5C5F3}|TaztWareHouse.Api\\TazyWareHouse.Api.csproj|solutionrelative:taztwarehouse.api\\contracts\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20250515103126_CompleteArchitectureDb.cs",
-              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\Migrations\\20250515103126_CompleteArchitectureDb.cs",
-              "RelativeDocumentMoniker": "TazyWareHouse.Infrastructure\\Migrations\\20250515103126_CompleteArchitectureDb.cs",
-              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\Migrations\\20250515103126_CompleteArchitectureDb.cs",
-              "RelativeToolTip": "TazyWareHouse.Infrastructure\\Migrations\\20250515103126_CompleteArchitectureDb.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T10:31:26.454Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "TaztWareHouse.Api\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "TaztWareHouse.Api\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAALAAAAAAAAAA==",
+              "Title": "AuthResponse.cs",
+              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\Contracts\\AuthResponse.cs",
+              "RelativeDocumentMoniker": "TaztWareHouse.Api\\Contracts\\AuthResponse.cs",
+              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\Contracts\\AuthResponse.cs",
+              "RelativeToolTip": "TaztWareHouse.Api\\Contracts\\AuthResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T10:31:15.905Z",
+              "WhenOpened": "2025-05-15T13:14:42.242Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Applicationn\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "TazyWareHouse.Applicationn\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Applicationn\\Services\\AuthService.cs",
-              "RelativeToolTip": "TazyWareHouse.Applicationn\\Services\\AuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\Contracts\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "TaztWareHouse.Api\\Contracts\\LoginRequest.cs",
+              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\Contracts\\LoginRequest.cs",
+              "RelativeToolTip": "TaztWareHouse.Api\\Contracts\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T10:31:02.198Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\Data\\Repositories\\UserRepository.cs",
-              "RelativeDocumentMoniker": "TazyWareHouse.Infrastructure\\Data\\Repositories\\UserRepository.cs",
-              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\Data\\Repositories\\UserRepository.cs",
-              "RelativeToolTip": "TazyWareHouse.Infrastructure\\Data\\Repositories\\UserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T10:13:12.086Z",
+              "WhenOpened": "2025-05-15T13:14:36.069Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "TazyWareHouse.Infrastructure\\Data\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\Data\\AppDbContext.cs",
-              "RelativeToolTip": "TazyWareHouse.Infrastructure\\Data\\AppDbContext.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAAAEwAAAA0AAAAAAAAAA==",
+              "Title": "RegisterRequest.cs",
+              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\Contracts\\RegisterRequest.cs",
+              "RelativeDocumentMoniker": "TaztWareHouse.Api\\Contracts\\RegisterRequest.cs",
+              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\Contracts\\RegisterRequest.cs",
+              "RelativeToolTip": "TaztWareHouse.Api\\Contracts\\RegisterRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T10:13:10.712Z",
+              "WhenOpened": "2025-05-15T13:14:33.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "TaztWareHouse.Api\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "TaztWareHouse.Api\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowDAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T13:13:55.164Z",
               "EditorCaption": ""
             }
           ]

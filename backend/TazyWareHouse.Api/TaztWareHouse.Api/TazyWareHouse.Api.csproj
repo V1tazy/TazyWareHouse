@@ -15,13 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TazyWareHouse.Applicationn\TazyWareHouse.Application.csproj" />
     <ProjectReference Include="..\TazyWareHouse.Core\TazyWareHouse.Core.csproj" />
     <ProjectReference Include="..\TazyWareHouse.Infrastructure\TazyWareHouse.Infrastructure.csproj" />
+    <ProjectReference Include="..\TazyWareHouse.SupportInfrastructure\TazyWareHouse.SupportInfrastructure.csproj" />
   </ItemGroup>
 
 </Project>

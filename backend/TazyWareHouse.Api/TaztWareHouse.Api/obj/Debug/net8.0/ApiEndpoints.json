@@ -9,13 +9,13 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "TazyWareHouse.Application.DTOs.UserDTOs.LoginRequest",
+        "Type": "TazyWareHouse.Api.Contracts.LoginRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "TazyWareHouse.Application.DTOs.UserDTOs.AuthReponse",
+        "Type": "TazyWareHouse.Api.Contracts.AuthResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -35,13 +35,13 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "TazyWareHouse.Application.DTOs.UserDTOs.RegisterRequest",
+        "Type": "TazyWareHouse.Api.Contracts.RegisterRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "TazyWareHouse.Application.DTOs.UserDTOs.AuthReponse",
+        "Type": "TazyWareHouse.Api.Contracts.AuthResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",

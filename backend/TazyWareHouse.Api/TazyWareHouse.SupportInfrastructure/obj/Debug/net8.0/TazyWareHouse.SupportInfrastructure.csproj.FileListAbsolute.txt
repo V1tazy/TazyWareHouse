@@ -1,0 +1,16 @@
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\obj\Debug\net8.0\TazyWareHouse.SupportInfrastructure.csproj.AssemblyReference.cache
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\obj\Debug\net8.0\TazyWareHouse.SupportInfrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\obj\Debug\net8.0\TazyWareHouse.SupportInfrastructure.AssemblyInfoInputs.cache
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\obj\Debug\net8.0\TazyWareHouse.SupportInfrastructure.AssemblyInfo.cs
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\obj\Debug\net8.0\TazyWareHouse.SupportInfrastructure.csproj.CoreCompileInputs.cache
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\obj\Debug\net8.0\TazyWareHouse.SupportInfrastructure.sourcelink.json
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\bin\Debug\net8.0\TazyWareHouse.SupportInfrastructure.deps.json
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\bin\Debug\net8.0\TazyWareHouse.SupportInfrastructure.dll
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\bin\Debug\net8.0\TazyWareHouse.SupportInfrastructure.pdb
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\bin\Debug\net8.0\TazyWareHouse.Core.dll
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\bin\Debug\net8.0\TazyWareHouse.Core.pdb
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\obj\Debug\net8.0\TazyWare.356A095E.Up2Date
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\obj\Debug\net8.0\TazyWareHouse.SupportInfrastructure.dll
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\obj\Debug\net8.0\refint\TazyWareHouse.SupportInfrastructure.dll
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\obj\Debug\net8.0\TazyWareHouse.SupportInfrastructure.pdb
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TazyWareHouse.SupportInfrastructure\obj\Debug\net8.0\ref\TazyWareHouse.SupportInfrastructure.dll

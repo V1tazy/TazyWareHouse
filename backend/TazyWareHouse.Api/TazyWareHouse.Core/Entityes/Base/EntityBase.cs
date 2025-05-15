@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TazyWareHouse.Core.Interfaces;
+using TazyWareHouse.Core.Interfaces.Base;
 
 namespace TazyWareHouse.Core.Entityes.Base
 {

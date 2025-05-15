@@ -1,36 +1,54 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TazyWareHouse.Core.Entityes.Users;
-using TazyWareHouse.Core.Interfaces;
+using TazyWareHouse.Core.Interfaces.Base;
+using TazyWareHouse.Core.Interfaces.Repository;
 
 namespace TazyWareHouse.Infrastructure.Data.Repositories
 {
-    public class UserRepository: IUserRepository
+    public class UserRepository : IUserRepository
     {
-        private readonly AppDbContext _context;
 
+        private readonly AppDbContext _context;
 
         public UserRepository(AppDbContext context)
         {
             _context = context;
         }
 
-        public async Task<User> CreateAsync(User user)
+
+        public async Task<User> AddAsync(User item)
         {
-            _context.Users.Add(user);
+            _context.Users.Add(item);
             await _context.SaveChangesAsync();
 
-            return user;
+            return item;
         }
 
-        public async Task<User?> GetByEmailAsync(string email)
+        public Task<User> GetAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<User> GetUserByEmailAsync(string email)
         {
             return await _context.Users
                 .FirstOrDefaultAsync(x => x.Email == email);
         }
 
-        public async Task<bool> UpdateAsync(User user)
+        public async Task RemoveAsync(Guid id)
         {
-            _context.Users.Update(user);
+            var user = await _context.Users.FindAsync(id);
+
+            if (user != null) 
+            {
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<bool> UpdateAsync(User item)
+        {
+            _context.Users.Update(item);
             return await _context.SaveChangesAsync() > 0;
         }
     }
