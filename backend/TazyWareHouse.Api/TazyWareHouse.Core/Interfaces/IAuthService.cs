@@ -1,4 +1,4 @@
-﻿using TazyWareHouse.Core.Models;
+﻿using TazyWareHouse.Core.Entityes.Users;
 
 namespace TazyWareHouse.Core.Interfaces
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TazyWareHouse.Core.Entityes.Users;
 using TazyWareHouse.Core.Interfaces;
-using TazyWareHouse.Core.Models;
 
 namespace TazyWareHouse.Infrastructure.Data.Repositories
 {

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TazyWareHouse.Core.Entityes.Users;
 using TazyWareHouse.Core.Interfaces;
-using TazyWareHouse.Core.Models;
 
 namespace TazyWareHouse.Application.Services
 {

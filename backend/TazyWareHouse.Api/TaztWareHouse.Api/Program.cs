@@ -17,13 +17,13 @@ namespace TazyWareHouse.Api
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            // Регистрация репозиториев
-            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            //// Регистрация репозиториев
+            //builder.Services.AddScoped<IUserRepository, UserRepository>();
 
-            // Регистрация других сервисов
-            builder.Services.AddScoped<IAuthService, AuthService>();
-            builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
-            builder.Services.AddSingleton<ITokenService, TokenService>();
+            //// Регистрация других сервисов
+            //builder.Services.AddScoped<IAuthService, AuthService>();
+            //builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
+            //builder.Services.AddSingleton<ITokenService, TokenService>();
 
             // Добавление контроллеров
             builder.Services.AddControllers();
