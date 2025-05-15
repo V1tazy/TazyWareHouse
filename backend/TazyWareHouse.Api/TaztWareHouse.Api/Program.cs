@@ -30,14 +30,20 @@ namespace TazyWareHouse.Api
 
             // Добавление сервисов Swagger (OpenAPI)
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen(c =>
+            builder.Services.AddSwaggerGen();
+
+            // ASP.NET Core
+            builder.Services.AddCors(options =>
             {
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
-                {
-                    Title = "TazyWareHouse API",
-                    Version = "v1"
-                });
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder.WithOrigins("http://localhost:3000") // Укажите ваш фронтенд URL
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod());
             });
+
+            
+
+
 
             var app = builder.Build();
 
@@ -51,11 +57,11 @@ namespace TazyWareHouse.Api
                 });
             }
 
-            app.UseHttpsRedirection();
+
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
-
+            app.UseCors("AllowSpecificOrigin");
             app.Run();
         }
     }

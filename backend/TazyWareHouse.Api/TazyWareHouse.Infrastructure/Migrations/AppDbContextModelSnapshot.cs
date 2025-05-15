@@ -22,6 +22,115 @@ namespace TazyWareHouse.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("TazyWareHouse.Core.Entityes.CategoryStat", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Value")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WarehouseId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WarehouseId");
+
+                    b.ToTable("CategoryStats");
+                });
+
+            modelBuilder.Entity("TazyWareHouse.Core.Entityes.EquipmentStatus", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("WarehouseId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WarehouseId");
+
+                    b.ToTable("EquipmentStatuses");
+                });
+
+            modelBuilder.Entity("TazyWareHouse.Core.Entityes.MonthlyData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Month")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Received")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Shipped")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WarehouseId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WarehouseId");
+
+                    b.ToTable("MonthlyDatas");
+                });
+
+            modelBuilder.Entity("TazyWareHouse.Core.Entityes.Warehouse", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Occupancy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TotalItems")
+                        .HasColumnType("int");
+
+                    b.Property<double>("TurnoverRate")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Warehouses");
+                });
+
             modelBuilder.Entity("TazyWareHouse.Core.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -55,6 +164,39 @@ namespace TazyWareHouse.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("TazyWareHouse.Core.Entityes.CategoryStat", b =>
+                {
+                    b.HasOne("TazyWareHouse.Core.Entityes.Warehouse", null)
+                        .WithMany("Categories")
+                        .HasForeignKey("WarehouseId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TazyWareHouse.Core.Entityes.EquipmentStatus", b =>
+                {
+                    b.HasOne("TazyWareHouse.Core.Entityes.Warehouse", null)
+                        .WithMany("EquipmentStatuses")
+                        .HasForeignKey("WarehouseId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TazyWareHouse.Core.Entityes.MonthlyData", b =>
+                {
+                    b.HasOne("TazyWareHouse.Core.Entityes.Warehouse", null)
+                        .WithMany("MonthlyData")
+                        .HasForeignKey("WarehouseId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("TazyWareHouse.Core.Entityes.Warehouse", b =>
+                {
+                    b.Navigation("Categories");
+
+                    b.Navigation("EquipmentStatuses");
+
+                    b.Navigation("MonthlyData");
                 });
 #pragma warning restore 612, 618
         }

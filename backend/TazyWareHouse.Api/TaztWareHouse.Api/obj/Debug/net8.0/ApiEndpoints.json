@@ -50,5 +50,15 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "TazyWareHouse.Api.Controllers.StatsController",
+    "Method": "GetWarehouses",
+    "RelativePath": "api/Stats/warehouses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

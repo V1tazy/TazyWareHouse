@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "TazyWareHouse API",
-    "version": "v1"
+    "title": "TazyWareHouse.Api",
+    "version": "1.0"
   },
   "paths": {
     "/api/Auth/login": {
@@ -97,6 +97,18 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/api/Stats/warehouses": {
+      "get": {
+        "tags": [
+          "Stats"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
