@@ -1,40 +1,34 @@
-// /components/DocumentForm/DocumentForm.tsx
-import { useState } from "react";
-import { Document, Template } from "@/types/document";
+import { useState, useEffect } from "react";
 
-interface DocumentFormProps {
-  document?: Document;
-  templates: Template[];
-  onSubmit: (data: Omit<Document, "id" | "createdAt">) => void;
-}
+const statusOptions = [
+  { value: "Черновик", label: "Черновик" },
+  { value: "Ожидает", label: "Ожидает" },
+  { value: "Утвержден", label: "Утвержден" },
+  { value: "Подписан", label: "Подписан" },
+];
 
-export const DocumentForm = ({ document, templates, onSubmit }: DocumentFormProps) => {
+export function DocumentForm({ document, templates, onSubmit }: { document?: any; templates: any[]; onSubmit: (data: any) => void }) {
   const [formData, setFormData] = useState({
-    name: document?.name || "",
-    type: document?.type || "Счет",
-    responsible: document?.responsible || "",
-    content: document?.content || "",
-    status: document?.status || "Черновик",
+    name: "",
+    documentURL: "",
+    status: "Черновик",
+    description: "",
+    tags: "",
+    documentTypeId: "",
   });
 
-  const [selectedTemplate, setSelectedTemplate] = useState<string>("");
+  useEffect(() => {
+    if (document) setFormData(document);
+  }, [document]);
 
-  const handleTemplateChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const templateId = e.target.value;
-    setSelectedTemplate(templateId);
-    const template = templates.find((t) => t.id === Number(templateId));
-    if (template) {
-      setFormData((prev) => ({ ...prev, content: template.content, type: template.type }));
-    }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({
-      ...formData,
-      signatures: document?.signatures || [],
-      approvers: document?.approvers || [],
-    });
+    onSubmit(formData);
   };
 
   return (
@@ -43,35 +37,31 @@ export const DocumentForm = ({ document, templates, onSubmit }: DocumentFormProp
         <label className="block text-sm font-medium text-gray-700">Название</label>
         <input
           type="text"
+          name="name"
           value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-          required
+          onChange={handleChange}
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
         />
       </div>
-
       <div>
-        <label className="block text-sm font-medium text-gray-700">Тип</label>
-        <select
-          value={formData.type}
-          onChange={(e) => setFormData({ ...formData, type: e.target.value as Document["type"] })}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-        >
-          <option value="Счет">Счет</option>
-          <option value="Акт">Акт</option>
-          <option value="Инвентаризация">Инвентаризация</option>
-          <option value="Гарантия">Гарантия</option>
-        </select>
+        <label className="block text-sm font-medium text-gray-700">URL документа</label>
+        <input
+          type="text"
+          name="documentURL"
+          value={formData.documentURL}
+          onChange={handleChange}
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+        />
       </div>
-
       <div>
-        <label className="block text-sm font-medium text-gray-700">Шаблон</label>
+        <label className="block text-sm font-medium text-gray-700">Тип документа</label>
         <select
-          value={selectedTemplate}
-          onChange={handleTemplateChange}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+          name="documentTypeId"
+          value={formData.documentTypeId}
+          onChange={handleChange}
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
         >
-          <option value="">Выберите шаблон</option>
+          <option value="">Выберите тип</option>
           {templates.map((template) => (
             <option key={template.id} value={template.id}>
               {template.name}
@@ -79,34 +69,46 @@ export const DocumentForm = ({ document, templates, onSubmit }: DocumentFormProp
           ))}
         </select>
       </div>
-
       <div>
-        <label className="block text-sm font-medium text-gray-700">Ответственный</label>
+        <label className="block text-sm font-medium text-gray-700">Статус</label>
+        <select
+          name="status"
+          value={formData.status}
+          onChange={handleChange}
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+        >
+          {statusOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Описание</label>
+        <textarea
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Теги</label>
         <input
           type="text"
-          value={formData.responsible}
-          onChange={(e) => setFormData({ ...formData, responsible: e.target.value })}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-          required
+          name="tags"
+          value={formData.tags}
+          onChange={handleChange}
+          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
         />
       </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-700">Содержимое</label>
-        <textarea
-          value={formData.content}
-          onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-          rows={6}
-        />
-      </div>
-
       <button
         type="submit"
-        className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
       >
-        {document ? "Сохранить" : "Создать"}
+        Создать
       </button>
     </form>
   );
-};
+}

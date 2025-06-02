@@ -2,7 +2,7 @@
 
 namespace TazyWareHouse.Core.Entityes.Users
 {
-    public class User: EntityBase
+    public class User : EntityBase
     {
         public string Email { get; set; }
         public string HashedPassword { get; set; }
@@ -10,5 +10,8 @@ namespace TazyWareHouse.Core.Entityes.Users
         public string? LastName { get; set; }
         public string? PhoneNumber { get; set; }
         public Position? Position { get; set; }
+
+        // Добавлено свойство FullName
+        public string FullName => $"{FirstName} {LastName}".Trim();
     }
 }

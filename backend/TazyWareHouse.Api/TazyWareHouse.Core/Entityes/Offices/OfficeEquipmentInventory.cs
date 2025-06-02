@@ -12,6 +12,5 @@ namespace TazyWareHouse.Core.Entityes.Offices
     public class OfficeEquipmentInventory: EntityInventory
     {
         public Office Office { get; set; }
-
     }
 }

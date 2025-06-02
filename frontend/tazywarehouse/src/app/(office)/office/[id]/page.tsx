@@ -6,20 +6,9 @@ import { TransferHistory } from "@/components/TranferHistory/Component";
 import { Table } from "@/components/Table/Table";
 import { EquipmentTableConfig } from "@/config/TableConfig/EquipmentTableConfig";
 import { useFiltering } from "@/hooks/useFiltering";
+import { useEffect, useState } from "react";
 
 
-const mockOffice = {
-  id: 1,
-  name: "Головной офис",
-  location: "Москва",
-  address: "ул. Тверская, 12, офис 305",
-  responsible: "Иван Петров",
-  status: "Активен",
-  phone: "+7 (495) 123-45-67",
-  email: "office1@company.com",
-  equipmentCount: 25,
-  createdAt: "2023-01-15",
-};
 
 const mockEquipment = [
   { id: 1, type: "Ноутбук", model: "Dell XPS 15", serial: "DXPS152023001", status: "В использовании", user: "Иван Петров", warranty: "2025-01-15" },
@@ -33,11 +22,32 @@ const mockTransfers = [
 ];
 
 export default function OfficeDetailsPage() {
+
   const router = useRouter();
   const params = useParams();
   const officeId = params.id;
 
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(`http://localhost:5149/api/office/${officeId}`);
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error("Ошибка загрузки данных:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, [officeId]);
+
+
+  
     const {
       searchTerm,
       setSearchTerm,
@@ -64,6 +74,9 @@ export default function OfficeDetailsPage() {
     router.push("/office");
   };
 
+  if (loading) return <div>Загрузка...</div>;
+  if (!data) return <div>Данные не найдены</div>;
+
   return (
     <div className="min-h-screen p-4 max-w-7xl mx-auto">
       <header className="mb-8">
@@ -74,7 +87,7 @@ export default function OfficeDetailsPage() {
           >
             <ArrowLeftIcon className="h-5 w-5" />
           </button>
-          <h1 className="text-2xl font-bold text-gray-900">{mockOffice.name}</h1>
+          <h1 className="text-2xl font-bold text-gray-900">{data.name}</h1>
         </div>
       </header>
 
@@ -83,11 +96,11 @@ export default function OfficeDetailsPage() {
           <div className="flex justify-between items-start mb-6">
             <div>
               <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                mockOffice.status === "Активен" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+                data.status === "Активен" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
               }`}>
-                {mockOffice.status}
+                {data.status}
               </span>
-              <p className="mt-1 text-sm text-gray-500">ID: {mockOffice.id}</p>
+              <p className="mt-1 text-sm text-gray-500">ID: {data.id}</p>
             </div>
             <div className="flex space-x-2">
               <button
@@ -116,27 +129,27 @@ export default function OfficeDetailsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h3 className="text-sm font-medium text-gray-500">Местоположение</h3>
-              <p className="mt-1 text-sm text-gray-900">{mockOffice.location}</p>
+              <p className="mt-1 text-sm text-gray-900">{data.location}</p>
             </div>
             <div>
               <h3 className="text-sm font-medium text-gray-500">Адрес</h3>
-              <p className="mt-1 text-sm text-gray-900">{mockOffice.address}</p>
+              <p className="mt-1 text-sm text-gray-900">{data.address}</p>
             </div>
             <div>
               <h3 className="text-sm font-medium text-gray-500">Ответственный</h3>
-              <p className="mt-1 text-sm text-gray-900">{mockOffice.responsible}</p>
+              <p className="mt-1 text-sm text-gray-900">{data.responsible}</p>
             </div>
             <div>
               <h3 className="text-sm font-medium text-gray-500">Телефон</h3>
-              <p className="mt-1 text-sm text-gray-900">{mockOffice.phone}</p>
+              <p className="mt-1 text-sm text-gray-900">{data.phone}</p>
             </div>
             <div>
               <h3 className="text-sm font-medium text-gray-500">Email</h3>
-              <p className="mt-1 text-sm text-gray-900">{mockOffice.email}</p>
+              <p className="mt-1 text-sm text-gray-900">{data.email}</p>
             </div>
             <div>
               <h3 className="text-sm font-medium text-gray-500">Дата создания</h3>
-              <p className="mt-1 text-sm text-gray-900">{mockOffice.createdAt}</p>
+              <p className="mt-1 text-sm text-gray-900">{data.createdAt}</p>
             </div>
           </div>
         </div>
@@ -146,7 +159,7 @@ export default function OfficeDetailsPage() {
           <div className="space-y-4">
             <div>
               <h3 className="text-sm font-medium text-gray-500">Количество оборудования</h3>
-              <p className="mt-1 text-2xl font-semibold text-gray-900">{mockOffice.equipmentCount}</p>
+              <p className="mt-1 text-2xl font-semibold text-gray-900">{data.equipmentCount}</p>
             </div>
             <div>
               <h3 className="text-sm font-medium text-gray-500">Распределение по типам</h3>

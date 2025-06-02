@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { Table } from "@/components/Table/Table";
@@ -7,33 +8,49 @@ import { documentColumns } from "@/config/TableConfig/DocumentConfig";
 import { Pagination } from "@/components/Pagination/Pagination";
 import { Filters } from "@/components/Filters/Filters";
 
-const mockDocuments = [
-  { id: 1, name: "Счет №001", type: "Счет", status: "Черновик", createdAt: "2025-05-01", responsible: "Иван Петров" },
-  { id: 2, name: "Акт №023", type: "Акт", status: "Утвержден", createdAt: "2025-04-28", responsible: "Анна Соколова" },
-  { id: 3, name: "Инвентаризация №005", type: "Инвентаризация", status: "Ожидает", createdAt: "2025-05-10", responsible: "Дмитрий Иванов" },
-  { id: 4, name: "Гарантия №017", type: "Гарантия", status: "Подписан", createdAt: "2025-05-03", responsible: "Елена Смирнова" },
-];
-
 export default function DocumentPage() {
+  const [documents, setDocuments] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [typeFilter, setTypeFilter] = useState("Все");
-  const [statusFilter, setStatusFilter] = useState("Все");
+  const [typeFilter, setTypeFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 5;
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const filteredDocuments = mockDocuments.filter((document) => {
-    const matchesSearch = document.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      document.responsible.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesType = typeFilter === "Все" || document.type === typeFilter;
-    const matchesStatus = statusFilter === "Все" || document.status === statusFilter;
-    return matchesSearch && matchesType && matchesStatus;
-  });
+  // Функция для загрузки данных с API
+const fetchDocuments = async () => {
+  setLoading(true);
+  setError("");
 
-  const totalPages = Math.ceil(filteredDocuments.length / itemsPerPage);
-  const paginatedDocuments = filteredDocuments.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  try {
+    const response = await fetch(
+      `http://localhost:5149/api/document?searchTerm=${searchTerm}&typeFilter=${typeFilter}&statusFilter=${statusFilter}&page=${currentPage}&pageSize=${itemsPerPage}`
+    );
+
+    if (!response.ok) {
+      throw new Error("Ошибка при загрузке данных.");
+    }
+
+    const data = await response.json();
+    console.log("Данные, полученные с API:", data); // Для отладки
+
+    // Устанавливаем данные напрямую
+    setDocuments(data); // Если `items` отсутствует, устанавливаем пустой массив
+    setTotalPages(data.totalPages || 1); // Если `totalPages` отсутствует, устанавливаем 1
+  } catch (err: any) {
+    console.error("Ошибка при загрузке документов:", err); // Для отладки
+    setError(err.message || "Не удалось загрузить документы.");
+  } finally {
+    setLoading(false);
+  }
+};
+
+  // Загрузка данных при изменении фильтров или страницы
+  useEffect(() => {
+    fetchDocuments();
+  }, [searchTerm, typeFilter, statusFilter, currentPage]);
 
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -86,12 +103,18 @@ export default function DocumentPage() {
           typeOptions={typeOptions}
         />
 
-        <Table
-          title="Список документов"
-          data={paginatedDocuments}
-          columns={documentColumns}
-          emptyMessage="Документы не найдены."
-        />
+        {loading ? (
+          <p className="text-center text-gray-500">Загрузка...</p>
+        ) : error ? (
+          <p className="text-center text-red-500">{error}</p>
+        ) : (
+          <Table
+            title="Список документов"
+            data={documents}
+            columns={documentColumns}
+            emptyMessage="Документы не найдены."
+          />
+        )}
 
         <Pagination
           currentPage={currentPage}

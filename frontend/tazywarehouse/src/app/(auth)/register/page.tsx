@@ -35,7 +35,7 @@ export default function RegisterPage(){
     return(
         <div className="min-h-screen flex items-center justify-center">
             <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-md p-8 bg-white drop-shadow-2xl">
-                <label className="text-center text-xl font-bold">Авторизация</label>
+                <label className="text-center text-xl font-bold">Регистрация</label>
 
                 <input name="email" placeholder="Введите email" type="email" className="p-2 border rounded" required></input>
 

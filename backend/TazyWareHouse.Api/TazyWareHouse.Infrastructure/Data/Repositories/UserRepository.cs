@@ -24,14 +24,17 @@ namespace TazyWareHouse.Infrastructure.Data.Repositories
             return item;
         }
 
-        public Task<User> GetAsync(Guid id)
+        public async Task<User> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _context.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Id == id);
         }
 
         public async Task<User> GetUserByEmailAsync(string email)
         {
             return await _context.Users
+                .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Email == email);
         }
 

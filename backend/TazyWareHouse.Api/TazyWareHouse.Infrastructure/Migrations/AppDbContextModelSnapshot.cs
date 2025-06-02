@@ -88,6 +88,11 @@ namespace TazyWareHouse.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
                     b.Property<Guid>("DocumentTypeId")
                         .HasColumnType("uniqueidentifier");
 
@@ -95,12 +100,25 @@ namespace TazyWareHouse.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<Guid>("ResponsibleId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tags")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.HasKey("Id");
 
@@ -119,11 +137,13 @@ namespace TazyWareHouse.Infrastructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("TemplateURL")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.HasKey("Id");
 
@@ -147,6 +167,9 @@ namespace TazyWareHouse.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("OfficeId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("SerialNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -162,7 +185,65 @@ namespace TazyWareHouse.Infrastructure.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("OfficeId");
+
                     b.ToTable("Equipments");
+                });
+
+            modelBuilder.Entity("TazyWareHouse.Core.Entityes.Offices.Office", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Responsible")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Offices");
+                });
+
+            modelBuilder.Entity("TazyWareHouse.Core.Entityes.Offices.OfficeEquipmentInventory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("EquipmentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OfficeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("assignedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EquipmentId");
+
+                    b.HasIndex("OfficeId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("OfficeEquipmentInventories");
                 });
 
             modelBuilder.Entity("TazyWareHouse.Core.Entityes.Products.Category", b =>
@@ -306,7 +387,7 @@ namespace TazyWareHouse.Infrastructure.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PositionId")
+                    b.Property<Guid?>("PositionId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -415,75 +496,6 @@ namespace TazyWareHouse.Infrastructure.Migrations
                     b.ToTable("WarehousesProductInventories");
                 });
 
-            modelBuilder.Entity("TazyWareHouse.Core.Offices.Office", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Addres")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("ResponsibleId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ResponsibleId");
-
-                    b.ToTable("Offices");
-                });
-
-            modelBuilder.Entity("TazyWareHouse.Core.Offices.OfficeEquipmentInventory", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("EquipmentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("OfficeId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("assignedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EquipmentId");
-
-                    b.HasIndex("OfficeId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("OfficeEquipmentInventories");
-                });
-
             modelBuilder.Entity("TazyWareHouse.Core.Entityes.DashBoard.DashboardActivities", b =>
                 {
                     b.HasOne("TazyWareHouse.Core.Entityes.Users.User", "User")
@@ -533,7 +545,38 @@ namespace TazyWareHouse.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("TazyWareHouse.Core.Entityes.Offices.Office", null)
+                        .WithMany("Equipments")
+                        .HasForeignKey("OfficeId");
+
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("TazyWareHouse.Core.Entityes.Offices.OfficeEquipmentInventory", b =>
+                {
+                    b.HasOne("TazyWareHouse.Core.Entityes.Equipments.Equipment", "Equipment")
+                        .WithMany()
+                        .HasForeignKey("EquipmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TazyWareHouse.Core.Entityes.Offices.Office", "Office")
+                        .WithMany()
+                        .HasForeignKey("OfficeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TazyWareHouse.Core.Entityes.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Equipment");
+
+                    b.Navigation("Office");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("TazyWareHouse.Core.Entityes.Products.Product", b =>
@@ -574,9 +617,7 @@ namespace TazyWareHouse.Infrastructure.Migrations
                 {
                     b.HasOne("TazyWareHouse.Core.Entityes.Users.Position", "Position")
                         .WithMany()
-                        .HasForeignKey("PositionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PositionId");
 
                     b.Navigation("Position");
                 });
@@ -638,42 +679,9 @@ namespace TazyWareHouse.Infrastructure.Migrations
                     b.Navigation("Warehouse");
                 });
 
-            modelBuilder.Entity("TazyWareHouse.Core.Offices.Office", b =>
+            modelBuilder.Entity("TazyWareHouse.Core.Entityes.Offices.Office", b =>
                 {
-                    b.HasOne("TazyWareHouse.Core.Entityes.Users.User", "Responsible")
-                        .WithMany()
-                        .HasForeignKey("ResponsibleId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Responsible");
-                });
-
-            modelBuilder.Entity("TazyWareHouse.Core.Offices.OfficeEquipmentInventory", b =>
-                {
-                    b.HasOne("TazyWareHouse.Core.Entityes.Equipments.Equipment", "Equipment")
-                        .WithMany()
-                        .HasForeignKey("EquipmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TazyWareHouse.Core.Offices.Office", "Office")
-                        .WithMany()
-                        .HasForeignKey("OfficeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TazyWareHouse.Core.Entityes.Users.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Equipment");
-
-                    b.Navigation("Office");
-
-                    b.Navigation("User");
+                    b.Navigation("Equipments");
                 });
 
             modelBuilder.Entity("TazyWareHouse.Core.Entityes.Users.Position", b =>

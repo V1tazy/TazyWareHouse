@@ -6,7 +6,7 @@ import { ColumnConfig } from "./BaseTableConfig";
 
 const documentColumns: ColumnConfig[] = [
   { key: "name", header: "Название" },
-  { key: "type", header: "Тип" },
+  { key: "documentTypeName", header: "Тип документа" }, // Используем `documentTypeId` напрямую
   { 
     key: "status", 
     header: "Статус",
@@ -22,8 +22,7 @@ const documentColumns: ColumnConfig[] = [
       </span>
     )
   },
-  { key: "createdAt", header: "Дата создания" },
-  { key: "responsible", header: "Ответственный" },
+  { key: "userEmail", header: "Ответственный" }, // Используем `userEmail` напрямую
   { 
     key: "actions", 
     header: "Действия",
@@ -37,11 +36,6 @@ const documentColumns: ColumnConfig[] = [
             Редактировать
           </Link>
         )}
-        {row.status === "Ожидает" && (
-          <Link href={`/documents/${row.id}/sign`} className="text-blue-500 hover:text-blue-600">
-            Подписать
-          </Link>
-        )}
         <button
           onClick={() => alert(`Экспорт ${row.name}...`)}
           className="text-blue-500 hover:text-blue-600"
@@ -53,6 +47,4 @@ const documentColumns: ColumnConfig[] = [
   }
 ];
 
-
-
-export {documentColumns}
+export { documentColumns };

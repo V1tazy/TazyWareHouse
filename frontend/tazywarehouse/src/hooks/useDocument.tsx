@@ -1,63 +1,93 @@
-// /hooks/useDocument.ts
-import { useState } from "react";
-import { Document, Template } from "@/types/document";
+import { useState, useEffect } from "react";
 
-export const useDocument = () => {
-  const [documents, setDocuments] = useState<Document[]>([
-    { id: 1, name: "Счет №001", type: "Счет", status: "Черновик", createdAt: "2025-05-01", responsible: "Иван Петров" },
-    { id: 2, name: "Акт №023", type: "Акт", status: "Утвержден", createdAt: "2025-04-28", responsible: "Анна Соколова" },
-    { id: 3, name: "Инвентаризация №005", type: "Инвентаризация", status: "Ожидает", createdAt: "2025-05-10", responsible: "Дмитрий Иванов" },
-    { id: 4, name: "Гарантия №017", type: "Гарантия", status: "Подписан", createdAt: "2025-05-03", responsible: "Елена Смирнова" },
-  ]);
+export interface Document {
+  id?: string;
+  name: string;
+  documentURL: string;
+  status: string;
+  description: string;
+  tags: string;
+  documentTypeId: string;
+  userEmail?: string;
+  // Добавьте другие поля, если нужно
+}
 
-  const [templates, setTemplates] = useState<Template[]>([
-    { id: 1, name: "Шаблон счета", type: "Счет", content: "<h1>Счет</h1><p>Сумма: {amount}</p>" },
-    { id: 2, name: "Шаблон акта", type: "Акт", content: "<h1>Акт</h1><p>Услуги: {services}</p>" },
-  ]);
+const API_BASE_URL = "http://localhost:5149/api/Document";
 
-  const createDocument = (document: Omit<Document, "id" | "createdAt">) => {
-    const newDocument = {
-      ...document,
-      id: documents.length + 1,
-      createdAt: new Date().toISOString().split("T")[0],
-    };
-    setDocuments([...documents, newDocument]);
-    return newDocument;
+export function useDocument() {
+  const [templates, setTemplates] = useState([]);
+  const [error, setError] = useState<string | null>(null);
+
+  // Получить все шаблоны
+  const fetchTemplates = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/templates`);
+      if (!response.ok) throw new Error("Ошибка при загрузке шаблонов документов.");
+      setTemplates(await response.json());
+    } catch (err: any) {
+      setError(err.message || "Не удалось загрузить шаблоны документов.");
+    }
   };
 
-  const updateDocument = (id: number, updated: Partial<Document>) => {
-    setDocuments(documents.map((doc) => (doc.id === id ? { ...doc, ...updated } : doc)));
+  // Получить документ по id
+  const getDocument = async (id: string) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/${id}`);
+      if (!response.ok) return null;
+      return await response.json();
+    } catch {
+      return null;
+    }
   };
 
-  const signDocument = (id: number, signature: string) => {
-    setDocuments(
-      documents.map((doc) =>
-        doc.id === id
-          ? { ...doc, signatures: [...(doc.signatures || []), signature], status: "Подписан" }
-          : doc
-      )
-    );
+  // Создать документ
+  const createDocument = async (document: Document) => {
+    try {
+      const response = await fetch(API_BASE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(document),
+      });
+      if (!response.ok) throw new Error("Ошибка при создании документа.");
+      return await response.json();
+    } catch (err: any) {
+      setError(err.message || "Не удалось создать документ.");
+      throw err;
+    }
   };
 
-  const approveDocument = (id: number, approver: string) => {
-    setDocuments(
-      documents.map((doc) =>
-        doc.id === id
-          ? { ...doc, approvers: [...(doc.approvers || []), approver], status: "Утвержден" }
-          : doc
-      )
-    );
+  // Обновить документ
+  const updateDocument = async (id: string, document: Document) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(document),
+      });
+      if (!response.ok) throw new Error("Ошибка при обновлении документа.");
+    } catch (err: any) {
+      setError(err.message || "Не удалось обновить документ.");
+      throw err;
+    }
   };
 
-  const getDocument = (id: number) => documents.find((doc) => doc.id === id);
-
-  return {
-    documents,
-    templates,
-    createDocument,
-    updateDocument,
-    signDocument,
-    approveDocument,
-    getDocument,
+  // Подписать документ (пример, если есть отдельный endpoint)
+  const signDocument = async (id: string, signature: string) => {
+    try {
+      // Здесь предполагается, что есть endpoint для подписи
+      const response = await fetch(`${API_BASE_URL}/${id}/sign`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ signature }),
+      });
+      if (!response.ok) throw new Error("Ошибка при подписании документа.");
+    } catch (err: any) {
+      setError(err.message || "Не удалось подписать документ.");
+      throw err;
+    }
   };
-};
+
+  useEffect(() => { fetchTemplates(); }, []);
+
+  return { templates, createDocument, getDocument, updateDocument, signDocument, error };
+}

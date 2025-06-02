@@ -67,18 +67,33 @@ namespace TazyWareHouse.Infrastructure.Data
                 .HasIndex(u => u.Email)
                 .IsUnique();
 
-
-            modelBuilder.Entity<Office>()
-                .HasOne(o => o.Responsible)
-                .WithMany()
-                .HasForeignKey(o => o.ResponsibleId)
-                .OnDelete(DeleteBehavior.NoAction);
-
             modelBuilder.Entity<Warehouse>()
                 .HasOne(o => o.Responsible)
                 .WithMany()
                 .HasForeignKey(o => o.ResponsibleId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Document>()
+                .Property(d => d.Name)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            modelBuilder.Entity<Document>()
+                .Property(d => d.Description)
+                .HasMaxLength(1000);
+
+            modelBuilder.Entity<Document>()
+                .Property(d => d.Tags)
+                .HasMaxLength(500);
+
+            modelBuilder.Entity<DocumentType>()
+                .Property(dt => dt.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            modelBuilder.Entity<DocumentType>()
+                .Property(dt => dt.TemplateURL)
+                .HasMaxLength(500);
 
         }
     }
