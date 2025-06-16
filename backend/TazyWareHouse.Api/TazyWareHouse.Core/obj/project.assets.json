@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj",
+      "projectUniqueName": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj",
       "projectName": "TazyWareHouse.Core",
-      "projectPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj",
+      "projectPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj",
       "packagesPath": "C:\\Users\\89960\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\obj\\",
+      "outputPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

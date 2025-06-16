@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cy7klk18HaY=",
+  "dgSpecHash": "tNw0LmUHUOE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.SupportInfrastructure\\TazyWareHouse.SupportInfrastructure.csproj",
+  "projectFilePath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.SupportInfrastructure\\TazyWareHouse.SupportInfrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\89960\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\89960\\.nuget\\packages\\microsoft.bcl.memory\\9.0.0\\microsoft.bcl.memory.9.0.0.nupkg.sha512",

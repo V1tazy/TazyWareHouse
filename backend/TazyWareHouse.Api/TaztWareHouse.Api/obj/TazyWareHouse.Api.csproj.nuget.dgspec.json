@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\TazyWareHouse.Api.csproj": {}
+    "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\TazyWareHouse.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\TazyWareHouse.Api.csproj": {
+    "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\TazyWareHouse.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\TazyWareHouse.Api.csproj",
+        "projectUniqueName": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\TazyWareHouse.Api.csproj",
         "projectName": "TazyWareHouse.Api",
-        "projectPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\TazyWareHouse.Api.csproj",
+        "projectPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\TazyWareHouse.Api.csproj",
         "packagesPath": "C:\\Users\\89960\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\obj\\",
+        "outputPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,17 +32,17 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Applicationn\\TazyWareHouse.Application.csproj": {
-                "projectPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Applicationn\\TazyWareHouse.Application.csproj"
+              "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Applicationn\\TazyWareHouse.Application.csproj": {
+                "projectPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Applicationn\\TazyWareHouse.Application.csproj"
               },
-              "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj": {
-                "projectPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj"
+              "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj": {
+                "projectPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj"
               },
-              "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj"
+              "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj"
               },
-              "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.SupportInfrastructure\\TazyWareHouse.SupportInfrastructure.csproj": {
-                "projectPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.SupportInfrastructure\\TazyWareHouse.SupportInfrastructure.csproj"
+              "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.SupportInfrastructure\\TazyWareHouse.SupportInfrastructure.csproj": {
+                "projectPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.SupportInfrastructure\\TazyWareHouse.SupportInfrastructure.csproj"
               }
             }
           }
@@ -97,14 +97,14 @@
         }
       }
     },
-    "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Applicationn\\TazyWareHouse.Application.csproj": {
+    "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Applicationn\\TazyWareHouse.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Applicationn\\TazyWareHouse.Application.csproj",
+        "projectUniqueName": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Applicationn\\TazyWareHouse.Application.csproj",
         "projectName": "TazyWareHouse.Application",
-        "projectPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Applicationn\\TazyWareHouse.Application.csproj",
+        "projectPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Applicationn\\TazyWareHouse.Application.csproj",
         "packagesPath": "C:\\Users\\89960\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Applicationn\\obj\\",
+        "outputPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Applicationn\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -125,8 +125,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj": {
-                "projectPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj"
+              "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj": {
+                "projectPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj"
               }
             }
           }
@@ -166,14 +166,14 @@
         }
       }
     },
-    "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj": {
+    "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj",
+        "projectUniqueName": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj",
         "projectName": "TazyWareHouse.Core",
-        "projectPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj",
+        "projectPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj",
         "packagesPath": "C:\\Users\\89960\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\obj\\",
+        "outputPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -231,14 +231,14 @@
         }
       }
     },
-    "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj": {
+    "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj",
         "projectName": "TazyWareHouse.Infrastructure",
-        "projectPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\TazyWareHouse.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\89960\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -259,8 +259,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj": {
-                "projectPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj"
+              "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj": {
+                "projectPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj"
               }
             }
           }
@@ -318,14 +318,14 @@
         }
       }
     },
-    "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.SupportInfrastructure\\TazyWareHouse.SupportInfrastructure.csproj": {
+    "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.SupportInfrastructure\\TazyWareHouse.SupportInfrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.SupportInfrastructure\\TazyWareHouse.SupportInfrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.SupportInfrastructure\\TazyWareHouse.SupportInfrastructure.csproj",
         "projectName": "TazyWareHouse.SupportInfrastructure",
-        "projectPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.SupportInfrastructure\\TazyWareHouse.SupportInfrastructure.csproj",
+        "projectPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.SupportInfrastructure\\TazyWareHouse.SupportInfrastructure.csproj",
         "packagesPath": "C:\\Users\\89960\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.SupportInfrastructure\\obj\\",
+        "outputPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.SupportInfrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -346,8 +346,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj": {
-                "projectPath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj"
+              "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj": {
+                "projectPath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TazyWareHouse.Core\\TazyWareHouse.Core.csproj"
               }
             }
           }

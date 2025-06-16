@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6BbFTYksPnM=",
+  "dgSpecHash": "Z2s+O8Kd2nA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\89960\\Desktop\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\TazyWareHouse.Api.csproj",
+  "projectFilePath": "C:\\Users\\89960\\Desktop\\diplom\\TazyWareHouse\\backend\\TazyWareHouse.Api\\TaztWareHouse.Api\\TazyWareHouse.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\89960\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\89960\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
