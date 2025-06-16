@@ -1,37 +1,23 @@
-import { User } from "next-auth";
+const STORAGE_KEY = "tazywarehouse_users";
 
-const API_URL = 'http://localhost:5149/api/auth'; // Замените на ваш URL бэкенда
-
-export async function registerUser(email: string, password: string): Promise<Omit<User, 'password'>> {
-    const response = await fetch(`${API_URL}/register`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-    });
-
-    if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Registration failed');
+export async function registerUser(email: string, password: string): Promise<{ email: string }> {
+    await new Promise((resolve) => setTimeout(resolve, 200)); // эмуляция задержки
+    const users = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    if (users.some((u: any) => u.email === email)) {
+        throw new Error("Пользователь с таким email уже существует");
     }
-
-    return await response.json();
+    const newUser = { email, password };
+    users.push(newUser);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+    return { email };
 }
 
-export async function loginUser(email: string, password: string): Promise<Omit<User, 'password'> | null> {
-    const response = await fetch(`${API_URL}/login`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-    });
-
-    if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Login failed');
+export async function loginUser(email: string, password: string): Promise<{ email: string } | null> {
+    await new Promise((resolve) => setTimeout(resolve, 200)); // эмуляция задержки
+    const users = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    const user = users.find((u: any) => u.email === email && u.password === password);
+    if (!user) {
+        throw new Error("Неверный email или пароль");
     }
-
-    return await response.json();
+    return { email: user.email };
 }

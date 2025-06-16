@@ -3,6 +3,27 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
+const STORAGE_KEY = "tazywarehouse_offices";
+
+function getOfficesFromStorage() {
+  if (typeof window === "undefined") return [];
+  const data = localStorage.getItem(STORAGE_KEY);
+  if (data) {
+    try {
+      return JSON.parse(data);
+    } catch {
+      return [];
+    }
+  }
+  return [];
+}
+
+function saveOfficesToStorage(offices: any[]) {
+  if (typeof window !== "undefined") {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(offices));
+  }
+}
+
 export default function NewOfficePage() {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -14,30 +35,36 @@ export default function NewOfficePage() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:5149/api/Office", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          location: formData.location,
-          responsible: formData.responsible,
-          status: formData.status,
-          equipmentCount: 0
-          // address: formData.address, // если добавите в DTO и модель, раскомментируйте
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Ошибка при создании офиса");
+      // Получаем текущие офисы
+      const offices = getOfficesFromStorage();
+      // Проверка на уникальность названия офиса
+      if (offices.some((o: any) => o.name === formData.name)) {
+        setError("Офис с таким названием уже существует");
+        setLoading(false);
+        return;
       }
-
+      // Генерируем новый id
+      const newId =
+        offices.length > 0
+          ? Math.max(...offices.map((o: any) => o.id || 0)) + 1
+          : 1;
+      const newOffice = {
+        id: newId,
+        name: formData.name,
+        location: formData.location,
+        address: formData.address,
+        responsible: formData.responsible,
+        status: formData.status,
+      };
+      // Сохраняем
+      saveOfficesToStorage([...offices, newOffice]);
       router.push("/office");
     } catch (err: any) {
       setError(err.message || "Ошибка при создании офиса");
@@ -62,7 +89,6 @@ export default function NewOfficePage() {
 
       <form onSubmit={handleSubmit} className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow">
         <div className="grid grid-cols-1 gap-6">
-          {/* ... остальные поля ... */}
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">
               Название офиса*

@@ -33,7 +33,6 @@ namespace TazyWareHouse.Api
             builder.Services.AddScoped<IOfficeService, OfficeService>();
             builder.Services.AddScoped<IProfileService, ProfileService>();
             builder.Services.AddScoped<IAuthService, AuthService>();
-            builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<IDocumentService, DocumentService>();
             builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
             builder.Services.AddSingleton<ITokenService, TokenService>();

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import { useSession, signOut } from "next-auth/react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type NavLink = {
   label: string;
@@ -11,19 +11,34 @@ type Props = {
   navLinks: NavLink[];
 };
 
+const CURRENT_USER_KEY = "tazywarehouse_current_user";
+
 const Navigation = ({ navLinks }: Props) => {
   const pathname = usePathname();
-  const session = useSession();
+  const router = useRouter();
+  const [isAuth, setIsAuth] = useState(false);
 
-  console.log(session)
+  useEffect(() => {
+    setIsAuth(!!localStorage.getItem(CURRENT_USER_KEY));
+    // Слушаем изменения localStorage (например, logout в другой вкладке)
+    const handler = () => setIsAuth(!!localStorage.getItem(CURRENT_USER_KEY));
+    window.addEventListener("storage", handler);
+    return () => window.removeEventListener("storage", handler);
+  }, []);
+
+  const handleLogout = (e: React.MouseEvent) => {
+    e.preventDefault();
+    localStorage.removeItem(CURRENT_USER_KEY);
+    setIsAuth(false);
+    router.push("/login");
+  };
 
   return (
     <nav className="flex items-center justify-center gap-8">
-      {session?.data && (
+      {isAuth && (
         <>
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
-
             return (
               <Link
                 key={link.label}
@@ -41,9 +56,9 @@ const Navigation = ({ navLinks }: Props) => {
           <Link href="/profile">Профиль</Link>
         </>
       )}
-      
-      {session?.data ? (
-        <Link href="#" onClick={() => signOut({ callbackUrl: "/" })}>
+
+      {isAuth ? (
+        <Link href="#" onClick={handleLogout}>
           Выйти
         </Link>
       ) : (

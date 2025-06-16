@@ -8,10 +8,9 @@ using TazyWareHouse.Core.Interfaces.Base;
 
 namespace TazyWareHouse.Core.Interfaces.Repository
 {
-    interface IEquimentRepository: IRepository<Equipment>
+    public interface IEquimentRepository: IRepository<Equipment>
     {
         Task<Equipment> GetByIdAsync(Guid id);
         Task<IEnumerable<Equipment>> GetAllAsync();
-        Task<bool> ExistsAsync(Guid id);
     }
 }

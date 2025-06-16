@@ -8,15 +8,67 @@ import { Pagination } from "@/components/Pagination/Pagination";
 import { Filters } from "@/components/Filters/Filters";
 import { useFiltering } from "@/hooks/useFiltering";
 
+const STORAGE_KEY = "tazywarehouse_offices";
+const DEFAULT_OFFICES = [
+  {
+    id: 1,
+    name: "Офис Москва",
+    location: "Москва",
+    responsible: "Иван Иванов",
+    status: "Активен",
+  },
+  {
+    id: 2,
+    name: "Офис СПб",
+    location: "Санкт-Петербург",
+    responsible: "Мария Петрова",
+    status: "Активен",
+  },
+  {
+    id: 3,
+    name: "Офис Казань",
+    location: "Казань",
+    responsible: "Алексей Смирнов",
+    status: "Неактивен",
+  },
+];
+
+function getOfficesFromStorage() {
+  if (typeof window === "undefined") return DEFAULT_OFFICES;
+  const data = localStorage.getItem(STORAGE_KEY);
+  if (data) {
+    try {
+      return JSON.parse(data);
+    } catch {
+      return DEFAULT_OFFICES;
+    }
+  }
+  return DEFAULT_OFFICES;
+}
+
+function saveOfficesToStorage(offices: any[]) {
+  if (typeof window !== "undefined") {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(offices));
+  }
+}
+
 export default function OfficePage() {
-  const [offices, setOffices] = useState([]);
+  const [offices, setOffices] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // Загружаем офисы из localStorage
   useEffect(() => {
-    fetch("http://localhost:5149/api/Office")
-      .then((res) => res.json())
-      .then((data) => setOffices(data))
-      .finally(() => setLoading(false));
+    function syncOffices() {
+      setOffices(getOfficesFromStorage());
+      setLoading(false);
+    }
+    syncOffices();
+    window.addEventListener("focus", syncOffices);
+    window.addEventListener("storage", syncOffices);
+    return () => {
+      window.removeEventListener("focus", syncOffices);
+      window.removeEventListener("storage", syncOffices);
+    };
   }, []);
 
   const {

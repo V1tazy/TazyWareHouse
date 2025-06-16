@@ -8,69 +8,72 @@ import { EquipmentTableConfig } from "@/config/TableConfig/EquipmentTableConfig"
 import { useFiltering } from "@/hooks/useFiltering";
 import { useEffect, useState } from "react";
 
+const STORAGE_KEY = "tazywarehouse_offices";
+const EQUIPMENT_KEY = "tazywarehouse_equipment";
 
+// Получить офис из localStorage по id
+function getOfficeById(id: string | number) {
+  const offices = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+  return offices.find((o: any) => String(o.id) === String(id)) || null;
+}
 
-const mockEquipment = [
-  { id: 1, type: "Ноутбук", model: "Dell XPS 15", serial: "DXPS152023001", status: "В использовании", user: "Иван Петров", warranty: "2025-01-15" },
-  { id: 2, type: "Монитор", model: "LG 27UL850", serial: "LG27850023", status: "В использовании", user: "Анна Соколова", warranty: "2024-11-20" },
-  { id: 3, type: "Принтер", model: "HP LaserJet Pro", serial: "HPLJP2023003", status: "На складе", user: "", warranty: "2025-03-10" },
-];
+// Получить оборудование, закреплённое за офисом
+function getEquipmentByOffice(officeName: string) {
+  const equipment = JSON.parse(localStorage.getItem(EQUIPMENT_KEY) || "[]");
+  return equipment.filter((e: any) => e.office === officeName);
+}
 
+// Мок-данные истории перемещений (можно заменить на localStorage)
 const mockTransfers = [
   { id: 1, equipment: "Ноутбук Dell XPS 15", from: "Склад", to: "Головной офис", date: "2023-02-10", responsible: "Сергей Иванов" },
   { id: 2, equipment: "Монитор LG 27UL850", from: "Филиал СПб", to: "Головной офис", date: "2023-03-15", responsible: "Анна Соколова" },
 ];
 
 export default function OfficeDetailsPage() {
-
   const router = useRouter();
   const params = useParams();
   const officeId = params.id;
 
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [equipment, setEquipment] = useState<any[]>([]);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch(`http://localhost:5149/api/office/${officeId}`);
-        const result = await response.json();
-        setData(result);
-      } catch (error) {
-        console.error("Ошибка загрузки данных:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
+    if (!officeId) return;
+    const office = getOfficeById(officeId);
+    setData(office);
+    setLoading(false);
 
-    fetchData();
+    if (office) {
+      setEquipment(getEquipmentByOffice(office.name));
+    }
   }, [officeId]);
 
-
-  
-    const {
-      searchTerm,
-      setSearchTerm,
-      statusFilter,
-      setStatusFilter,
-      currentPage,
-      paginatedData: paginatedEquipment,
-      totalPages,
-      handlePageChange,
-    } = useFiltering({
-      data: mockEquipment,
-      searchFields: ["type", "model", "serial", "user"],
-      initialStatusFilter: "Все",
-      itemsPerPage: 5,
-    });
+  const {
+    searchTerm,
+    setSearchTerm,
+    statusFilter,
+    setStatusFilter,
+    currentPage,
+    paginatedData: paginatedEquipment,
+    totalPages,
+    handlePageChange,
+  } = useFiltering({
+    data: equipment,
+    searchFields: ["type", "model", "serial", "user"],
+    initialStatusFilter: "Все",
+    itemsPerPage: 5,
+  });
 
   const handleEdit = () => {
     router.push(`/office/${officeId}/edit`);
   };
 
   const handleDelete = () => {
-    // Логика удаления офиса
-    console.log("Удаление офиса:", officeId);
+    // Удаление офиса из localStorage
+    const offices = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    const updated = offices.filter((o: any) => String(o.id) !== String(officeId));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
     router.push("/office");
   };
 
@@ -139,18 +142,7 @@ export default function OfficeDetailsPage() {
               <h3 className="text-sm font-medium text-gray-500">Ответственный</h3>
               <p className="mt-1 text-sm text-gray-900">{data.responsible}</p>
             </div>
-            <div>
-              <h3 className="text-sm font-medium text-gray-500">Телефон</h3>
-              <p className="mt-1 text-sm text-gray-900">{data.phone}</p>
-            </div>
-            <div>
-              <h3 className="text-sm font-medium text-gray-500">Email</h3>
-              <p className="mt-1 text-sm text-gray-900">{data.email}</p>
-            </div>
-            <div>
-              <h3 className="text-sm font-medium text-gray-500">Дата создания</h3>
-              <p className="mt-1 text-sm text-gray-900">{data.createdAt}</p>
-            </div>
+            {/* Можно добавить телефон/email, если они есть в данных */}
           </div>
         </div>
 
@@ -159,29 +151,9 @@ export default function OfficeDetailsPage() {
           <div className="space-y-4">
             <div>
               <h3 className="text-sm font-medium text-gray-500">Количество оборудования</h3>
-              <p className="mt-1 text-2xl font-semibold text-gray-900">{data.equipmentCount}</p>
+              <p className="mt-1 text-2xl font-semibold text-gray-900">{equipment.length}</p>
             </div>
-            <div>
-              <h3 className="text-sm font-medium text-gray-500">Распределение по типам</h3>
-              <div className="mt-2 space-y-1">
-                <div className="flex justify-between text-sm">
-                  <span>Ноутбуки</span>
-                  <span className="font-medium">12</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span>Мониторы</span>
-                  <span className="font-medium">8</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span>Принтеры</span>
-                  <span className="font-medium">3</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span>Мебель</span>
-                  <span className="font-medium">2</span>
-                </div>
-              </div>
-            </div>
+            {/* Можно добавить распределение по типам, если нужно */}
           </div>
         </div>
       </div>
@@ -194,7 +166,7 @@ export default function OfficeDetailsPage() {
                 `px-4 py-2 text-sm font-medium ${selected ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`
               }
             >
-              Оборудование ({mockEquipment.length})
+              Оборудование ({equipment.length})
             </Tab>
             <Tab
               className={({ selected }) =>
@@ -206,13 +178,13 @@ export default function OfficeDetailsPage() {
           </Tab.List>
           <Tab.Panels className="mt-4">
             <Tab.Panel>
-                    <Table
-                        title="Список оборудования"
-                        data={paginatedEquipment}
-                        columns={EquipmentTableConfig}
-                        emptyMessage="Оборудование не найдено"
-                        onRowClick={(id) => router.push(`/office/${officeId}/equipment/${id}`)}
-                    />
+              <Table
+                title="Список оборудования"
+                data={paginatedEquipment}
+                columns={EquipmentTableConfig}
+                emptyMessage="Оборудование не найдено"
+                onRowClick={(id) => router.push(`/office/${officeId}/equipment/${id}`)}
+              />
             </Tab.Panel>
             <Tab.Panel>
               <TransferHistory data={mockTransfers} />

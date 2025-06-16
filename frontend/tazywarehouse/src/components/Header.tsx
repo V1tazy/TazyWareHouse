@@ -2,7 +2,7 @@ import { Navigation } from "../components/Navigation";
 
 const navItems = [
   { label: 'Главная', href: "/" },
-  { label: "Оборудование", href: "/product" },
+  { label: "Оборудование", href: "/equipment" },
   { label: "Офис", href: "/office"},
   { label: "Документы", href: "/documents"}
 ];

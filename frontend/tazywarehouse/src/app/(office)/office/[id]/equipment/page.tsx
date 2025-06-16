@@ -5,19 +5,39 @@ import { Table } from "@/components/Table/Table";
 import { Pagination } from "@/components/Pagination/Pagination";
 import { useFiltering } from "@/hooks/useFiltering";
 import { EquipmentTableConfig } from "@/config/TableConfig/EquipmentTableConfig";
+import { useEffect, useState } from "react";
 
-const mockEquipment = [
-  { id: 1, type: "Ноутбук", model: "Dell XPS 15", serial: "DXPS152023001", status: "В использовании", user: "Иван Петров", warranty: "2025-01-15", location: "Головной офис" },
-  { id: 2, type: "Монитор", model: "LG 27UL850", serial: "LG27850023", status: "В использовании", user: "Анна Соколова", warranty: "2024-11-20", location: "Головной офис" },
-  { id: 3, type: "Принтер", model: "HP LaserJet Pro", serial: "HPLJP2023003", status: "На складе", user: "", warranty: "2025-03-10", location: "Склад" },
-  { id: 4, type: "Стул", model: "ErgoChair Pro", serial: "ECP2023001", status: "В использовании", user: "Дмитрий Иванов", warranty: "2026-05-15", location: "Головной офис" },
-  { id: 5, type: "Стол", model: "StandDesk 150", serial: "STD15020232", status: "В использовании", user: "Елена Смирнова", warranty: "2024-12-31", location: "Головной офис" },
-];
+const OFFICE_KEY = "tazywarehouse_offices";
+const EQUIPMENT_KEY = "tazywarehouse_equipment";
+
+// Получить офис по id
+function getOfficeById(id: string | number) {
+  const offices = JSON.parse(localStorage.getItem(OFFICE_KEY) || "[]");
+  return offices.find((o: any) => String(o.id) === String(id)) || null;
+}
+
+// Получить оборудование по имени офиса
+function getEquipmentByOffice(officeName: string) {
+  const equipment = JSON.parse(localStorage.getItem(EQUIPMENT_KEY) || "[]");
+  return equipment.filter((e: any) => e.office === officeName);
+}
 
 export default function OfficeEquipmentPage() {
   const router = useRouter();
   const params = useParams();
   const officeId = params.id;
+
+  const [office, setOffice] = useState<any>(null);
+  const [equipment, setEquipment] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (!officeId) return;
+    const officeObj = getOfficeById(officeId);
+    setOffice(officeObj);
+    if (officeObj) {
+      setEquipment(getEquipmentByOffice(officeObj.name));
+    }
+  }, [officeId]);
 
   const {
     searchTerm,
@@ -29,7 +49,7 @@ export default function OfficeEquipmentPage() {
     totalPages,
     handlePageChange,
   } = useFiltering({
-    data: mockEquipment.filter(eq => eq.location === "Головной офис"),
+    data: equipment,
     searchFields: ["type", "model", "serial", "user"],
     initialStatusFilter: "Все",
     itemsPerPage: 5,
@@ -43,6 +63,8 @@ export default function OfficeEquipmentPage() {
     { value: "Списано", label: "Списано" },
   ];
 
+  if (!office) return <div className="p-4">Офис не найден</div>;
+
   return (
     <div className="min-h-screen p-4 max-w-7xl mx-auto">
       <header className="mb-8">
@@ -53,7 +75,7 @@ export default function OfficeEquipmentPage() {
           >
             <ArrowLeftIcon className="h-5 w-5" />
           </button>
-          <h1 className="text-2xl font-bold text-gray-900">Оборудование офиса</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Оборудование офиса: {office.name}</h1>
         </div>
       </header>
 
@@ -84,7 +106,7 @@ export default function OfficeEquipmentPage() {
               ))}
             </select>
             <button
-              onClick={() => router.push(`/offices/${officeId}/equipment/new`)}
+              onClick={() => router.push(`/office/${officeId}/equipment/new`)}
               className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
             >
               <PlusIcon className="h-5 w-5 mr-2" />

@@ -24,6 +24,7 @@
   <ItemGroup>
     <Folder Include="Contracts\Documents\" />
     <Folder Include="Contracts\Auth\" />
+    <Folder Include="Contracts\Equipments\" />
   </ItemGroup>
 
 </Project>

@@ -176,3 +176,7 @@ C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TaztWareHouse.Api
 C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TaztWareHouse.Api\bin\Debug\net8.0\TazyWareHouse.SupportInfrastructure.dll
 C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TaztWareHouse.Api\bin\Debug\net8.0\TazyWareHouse.SupportInfrastructure.pdb
 C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TaztWareHouse.Api\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TaztWareHouse.Api\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TaztWareHouse.Api\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TaztWareHouse.Api\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\89960\Desktop\TazyWareHouse\backend\TazyWareHouse.Api\TaztWareHouse.Api\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json

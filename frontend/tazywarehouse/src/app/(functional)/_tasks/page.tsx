@@ -1,47 +1,36 @@
 "use client"
 
-import { TaskList } from "@/components/TaskList";
 import { PlusIcon, EllipsisVerticalIcon, CheckCircleIcon, ClockIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-// Тип для задачи
 type Task = {
   id: string;
   label: string;
   priority: 'low' | 'medium' | 'high';
   status: 'not-started' | 'in-progress' | 'completed';
-  dueDate?: Date;
+  dueDate?: string; // Сохраняем как строку для localStorage
   assignedTo?: string;
 };
 
-// Пример данных задач
-const initialTasks: Task[] = [
-  {
-    id: '1',
-    label: 'Провести инвентаризацию склада №2',
-    priority: 'high',
-    status: 'in-progress',
-    dueDate: new Date(Date.now() + 86400000), // Завтра
-    assignedTo: 'Иванов И.'
-  },
-  {
-    id: '2',
-    label: 'Подписать акт приема-передачи оборудования',
-    priority: 'medium',
-    status: 'not-started',
-    dueDate: new Date(Date.now() + 259200000), // 3 дня
-  },
-  {
-    id: '3',
-    label: 'Обновить реестр оргтехники',
-    priority: 'low',
-    status: 'completed',
-    dueDate: new Date(Date.now() - 86400000), // Вчера
-    assignedTo: 'Петрова С.'
-  }
-];
+const TASKS_KEY = "tazywarehouse_tasks";
 
-// Иконки для приоритетов
+function getTasksFromStorage(): Task[] {
+  if (typeof window === "undefined") return [];
+  const data = localStorage.getItem(TASKS_KEY);
+  if (data) {
+    try {
+      return JSON.parse(data);
+    } catch {
+      return [];
+    }
+  }
+  return [];
+}
+
+function saveTasksToStorage(tasks: Task[]) {
+  localStorage.setItem(TASKS_KEY, JSON.stringify(tasks));
+}
+
 const priorityIcons = {
   high: <ExclamationCircleIcon className="h-5 w-5 text-red-500" />,
   medium: <ClockIcon className="h-5 w-5 text-yellow-500" />,
@@ -49,11 +38,20 @@ const priorityIcons = {
 };
 
 export default function TaskPage() {
-  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskText, setNewTaskText] = useState('');
 
-  // Форматирование даты
-  const formatDate = (date: Date) => {
+  useEffect(() => {
+    setTasks(getTasksFromStorage());
+  }, []);
+
+  useEffect(() => {
+    saveTasksToStorage(tasks);
+  }, [tasks]);
+
+  const formatDate = (dateStr?: string) => {
+    if (!dateStr) return "";
+    const date = new Date(dateStr);
     return date.toLocaleDateString('ru-RU', {
       day: 'numeric',
       month: 'short',
@@ -61,7 +59,6 @@ export default function TaskPage() {
     });
   };
 
-  // Добавление новой задачи
   const addTask = () => {
     if (newTaskText.trim()) {
       const newTask: Task = {
@@ -69,14 +66,13 @@ export default function TaskPage() {
         label: newTaskText,
         priority: 'medium',
         status: 'not-started',
-        dueDate: new Date(Date.now() + 86400000) // По умолчанию срок - завтра
+        dueDate: new Date(Date.now() + 86400000).toISOString()
       };
       setTasks([...tasks, newTask]);
       setNewTaskText('');
     }
   };
 
-  // Изменение статуса задачи
   const toggleTaskStatus = (taskId: string) => {
     setTasks(tasks.map(task => {
       if (task.id === taskId) {
@@ -86,6 +82,24 @@ export default function TaskPage() {
       return task;
     }));
   };
+
+  function getEquipmentStats() {
+    const equipment = JSON.parse(localStorage.getItem("tazywarehouse_equipment") || "[]");
+    const offices = JSON.parse(localStorage.getItem("tazywarehouse_offices") || "[]");
+
+    // Пример: общее количество, распределение по офисам, статусам и т.д.
+    const totalItems = equipment.length;
+    const byOffice = offices.map((office: any) => ({
+      name: office.name,
+      count: equipment.filter((e: any) => e.office === office.name).length
+    }));
+    const byStatus = ["В использовании", "На складе", "В ремонте", "Списано"].map(status => ({
+      status,
+      count: equipment.filter((e: any) => e.status === status).length
+    }));
+
+    return { totalItems, byOffice, byStatus };
+  }
 
   return (
     <div className="w-full">
@@ -105,7 +119,7 @@ export default function TaskPage() {
           type="text"
           value={newTaskText}
           onChange={(e) => setNewTaskText(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && addTask()}
+          onKeyDown={(e) => e.key === 'Enter' && addTask()}
           placeholder="Добавить новую задачу..."
           className="flex-1 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
@@ -154,7 +168,7 @@ export default function TaskPage() {
                   {task.dueDate && (
                     <span className={`px-2 py-1 rounded ${
                       task.status === 'completed' ? 'bg-gray-100' : 
-                      task.dueDate.getTime() < Date.now() ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'
+                      new Date(task.dueDate).getTime() < Date.now() ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'
                     }`}>
                       {formatDate(task.dueDate)}
                     </span>

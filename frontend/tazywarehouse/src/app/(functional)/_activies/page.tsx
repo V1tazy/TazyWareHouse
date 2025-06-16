@@ -10,36 +10,6 @@ type Activity = {
   user?: string;
 };
 
-// Пример данных с разными типами активностей
-const ACTIVITIES: Activity[] = [
-  {
-    id: '1',
-    label: 'Новая поставка на склад №3',
-    timestamp: new Date(Date.now() - 3600000), // 1 час назад
-    type: 'info',
-    user: 'Иванов И.'
-  },
-  {
-    id: '2',
-    label: 'Задача "Инвентаризация" завершена',
-    timestamp: new Date(Date.now() - 86400000), // 1 день назад
-    type: 'success'
-  },
-  {
-    id: '3',
-    label: 'Просрочено списание оборудования',
-    timestamp: new Date(Date.now() - 172800000), // 2 дня назад
-    type: 'warning'
-  },
-  {
-    id: '4',
-    label: 'Перемещение товаров в зону B2',
-    timestamp: new Date(Date.now() - 1800000), // 30 минут назад
-    type: 'info',
-    user: 'Петрова С.'
-  }
-];
-
 // Иконки для разных типов активностей
 const activityIcons = {
   info: <ClockIcon className="h-5 w-5 text-blue-500" />,
@@ -47,7 +17,22 @@ const activityIcons = {
   warning: <ExclamationTriangleIcon className="h-5 w-5 text-yellow-500" />
 };
 
+function getActivitiesFromStorage() {
+  if (typeof window === "undefined") return [];
+  const data = localStorage.getItem("tazywarehouse_activities");
+  if (data) {
+    try {
+      return JSON.parse(data);
+    } catch {
+      return [];
+    }
+  }
+  return [];
+}
+
 export default function ActivitiesPage() {
+  const ACTIVITIES = getActivitiesFromStorage();
+
   // Форматирование даты в относительное время (например, "2 часа назад")
   const formatTimeAgo = (date: Date) => {
     const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
