@@ -67,7 +67,7 @@ export default function ActivitiesPage() {
       
       <div className="space-y-4">
         <Suspense fallback={<div>Загрузка активности...</div>}>
-          {ACTIVITIES.map((activity) => (
+          {ACTIVITIES.map((activity: Activity) => (
             <div 
               key={activity.id}
               className="flex items-start p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors"

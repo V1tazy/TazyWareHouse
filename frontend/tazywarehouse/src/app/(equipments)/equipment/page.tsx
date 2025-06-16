@@ -1,14 +1,56 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState, useCallback } from "react";
 import { mockEquipment } from "@/data/MockData";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { PlusIcon } from "@heroicons/react/24/outline";
 
-// --- CardList и Card ---
-function Card({ id, image, title, details, type }: any) {
+interface EquipmentItem {
+  id: string;
+  name: string;
+  categoryName: string;
+  meansureName: string;
+  supplierName: string;
+  warehouseName: string;
+  office?: string;
+  model?: string;
+  user?: string;
+}
+
+interface CardProps {
+  id: string;
+  image: string;
+  title: string;
+  details: { label: string; value: string }[];
+  type: string;
+}
+
+interface FilterProps {
+  categoryList: string[];
+  supplierList: string[];
+  warehouseList: string[];
+  officeList: string[];
+  modelList: string[];
+  userList: string[];
+  category: string;
+  setCategory: (value: string) => void;
+  supplier: string;
+  setSupplier: (value: string) => void;
+  warehouse: string;
+  setWarehouse: (value: string) => void;
+  office: string;
+  setOffice: (value: string) => void;
+  model: string;
+  setModel: (value: string) => void;
+  user: string;
+  setUser: (value: string) => void;
+  onClear: () => void;
+}
+
+// --- Card Component ---
+function Card({ id, image, title, details, type }: CardProps) {
   const router = useRouter();
 
   const handleEdit = () => {
@@ -24,12 +66,13 @@ function Card({ id, image, title, details, type }: any) {
           width={96}
           height={96}
           className="w-full h-full object-cover"
+          priority={false}
         />
       </div>
       <div className="flex flex-col flex-1">
         <h1 className="text-lg font-semibold text-gray-900 mb-2">{title}</h1>
         <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-          {details.map((detail: any, index: number) => (
+          {details.map((detail, index) => (
             <span key={index} className="text-sm text-gray-500">
               {detail.label}: {detail.value}
             </span>
@@ -56,13 +99,14 @@ function Card({ id, image, title, details, type }: any) {
   );
 }
 
-function CardList({ items }: { items: any[] }) {
+// --- CardList Component ---
+function CardList({ items }: { items: CardProps[] }) {
   return (
     <div className="flex flex-col gap-4">
       {items.length > 0 ? (
-        items.map((item, index) => (
+        items.map((item) => (
           <Card
-            key={index}
+            key={item.id}
             id={item.id}
             image={item.image}
             title={item.title}
@@ -77,7 +121,7 @@ function CardList({ items }: { items: any[] }) {
   );
 }
 
-// --- SelectBar ---
+// --- SelectBar Component ---
 function StringArraySelect({
   options,
   value,
@@ -95,8 +139,8 @@ function StringArraySelect({
       value={value}
       onChange={(e) => onChange(e.target.value)}
     >
-      {options.map((opt, idx) => (
-        <option key={idx} value={opt}>
+      {options.map((opt) => (
+        <option key={opt} value={opt}>
           {opt}
         </option>
       ))}
@@ -104,7 +148,7 @@ function StringArraySelect({
   );
 }
 
-// --- Filter ---
+// --- Filter Component ---
 function Filter({
   categoryList = [],
   supplierList = [],
@@ -125,7 +169,7 @@ function Filter({
   user,
   setUser,
   onClear,
-}: any) {
+}: FilterProps) {
   return (
     <div className="flex flex-col gap-4">
       <div>
@@ -152,7 +196,7 @@ function Filter({
           onChange={setWarehouse}
         />
       </div>
-      {officeList && officeList.length > 0 && (
+      {officeList.length > 1 && (
         <div>
           <label className="text-sm font-medium text-gray-700 mb-1 block">Офис</label>
           <StringArraySelect
@@ -162,7 +206,7 @@ function Filter({
           />
         </div>
       )}
-      {modelList && modelList.length > 0 && (
+      {modelList.length > 1 && (
         <div>
           <label className="text-sm font-medium text-gray-700 mb-1 block">Модель</label>
           <StringArraySelect
@@ -172,7 +216,7 @@ function Filter({
           />
         </div>
       )}
-      {userList && userList.length > 0 && (
+      {userList.length > 1 && (
         <div>
           <label className="text-sm font-medium text-gray-700 mb-1 block">Пользователь</label>
           <StringArraySelect
@@ -195,7 +239,7 @@ function Filter({
   );
 }
 
-// --- SearchBar ---
+// --- SearchBar Component ---
 function SearchBar({
   placeholder,
   value,
@@ -203,7 +247,7 @@ function SearchBar({
 }: {
   placeholder: string;
   value: string;
-  onChange: (e: any) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
     <input
@@ -221,13 +265,13 @@ const ITEMS_PER_PAGE = 8;
 const STORAGE_KEY = "tazywarehouse_equipment";
 const OFFICE_STORAGE_KEY = "tazywarehouse_offices";
 
-// Получить список офисов из localStorage
-function getOfficeNamesFromStorage() {
+function getOfficeNamesFromStorage(): string[] {
   if (typeof window === "undefined") return [];
   const data = localStorage.getItem(OFFICE_STORAGE_KEY);
   if (data) {
     try {
-      return JSON.parse(data).map((o: any) => o.name);
+      const offices = JSON.parse(data);
+      return Array.isArray(offices) ? offices.map((o: { name: string }) => o.name) : [];
     } catch {
       return [];
     }
@@ -235,33 +279,73 @@ function getOfficeNamesFromStorage() {
   return [];
 }
 
-function getEquipmentFromStorage() {
-  if (typeof window === "undefined") return mockEquipment;
+function getEquipmentFromStorage(): EquipmentItem[] {
+  if (typeof window === "undefined") {
+    // Приводим объекты mockEquipment к EquipmentItem
+    return mockEquipment.map((item: any) => ({
+      id: String(item.id ?? ""),
+      name: item.name ?? "",
+      categoryName: item.categoryName ?? "",
+      meansureName: item.meansureName ?? "",
+      supplierName: item.supplierName ?? "",
+      warehouseName: item.warehouseName ?? "",
+      office: item.office ?? "",
+      model: item.model ?? "",
+      user: item.user ?? "",
+    }));
+  }
   const data = localStorage.getItem(STORAGE_KEY);
   if (data) {
     try {
       return JSON.parse(data);
     } catch {
-      return mockEquipment;
+      // Аналогично для fallback
+      return mockEquipment.map((item: any) => ({
+        id: String(item.id ?? ""),
+        name: item.name ?? "",
+        categoryName: item.categoryName ?? "",
+        meansureName: item.meansureName ?? "",
+        supplierName: item.supplierName ?? "",
+        warehouseName: item.warehouseName ?? "",
+        office: item.office ?? "",
+        model: item.model ?? "",
+        user: item.user ?? "",
+      }));
     }
   }
-  return mockEquipment;
+  return mockEquipment.map((item: any) => ({
+    id: String(item.id ?? ""),
+    name: item.name ?? "",
+    categoryName: item.categoryName ?? "",
+    meansureName: item.meansureName ?? "",
+    supplierName: item.supplierName ?? "",
+    warehouseName: item.warehouseName ?? "",
+    office: item.office ?? "",
+    model: item.model ?? "",
+    user: item.user ?? "",
+  }));
 }
 
-function saveEquipmentToStorage(equipment: any[]) {
-  if (typeof window !== "undefined") {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(equipment));
-  }
-}
+function EquipmentPageWithSearchParams(props: { 
+  allEquipment: EquipmentItem[];
+  officeList: string[];
+  categoryList: string[];
+  supplierList: string[];
+  warehouseList: string[];
+  modelList: string[];
+  userList: string[];
+}) {
+  const {
+    allEquipment,
+    officeList,
+    categoryList,
+    supplierList,
+    warehouseList,
+    modelList,
+    userList,
+  } = props;
 
-function getEquipmentByOffice(officeName: string) {
-  const equipment = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-  return equipment.filter((e: any) => e.office === officeName);
-}
-
-export default function EquipmentPage() {
-  const [allEquipment, setAllEquipment] = useState<any[]>([]);
-  const [filtered, setFiltered] = useState<any[]>([]);
+  const [filtered, setFiltered] = useState<EquipmentItem[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Фильтры
@@ -276,55 +360,47 @@ export default function EquipmentPage() {
   const searchParams = useSearchParams();
   const officeFromQuery = searchParams.get("office");
 
-  // Загружаем данные из localStorage при монтировании и при возврате на страницу
-  useEffect(() => {
-    function syncEquipment() {
-      setAllEquipment(getEquipmentFromStorage());
-    }
-    syncEquipment();
-    window.addEventListener("focus", syncEquipment);
-    window.addEventListener("storage", syncEquipment);
-    return () => {
-      window.removeEventListener("focus", syncEquipment);
-      window.removeEventListener("storage", syncEquipment);
-    };
-  }, []);
-
   useEffect(() => {
     if (officeFromQuery && officeFromQuery !== office) {
       setOffice(officeFromQuery);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [officeFromQuery]);
+  }, [officeFromQuery, office]);
 
-  // Фильтрация по всем фильтрам и поиску
+  // Фильтрация
   useEffect(() => {
     let data = [...allEquipment];
-    if (category && category !== "Категория")
+    
+    if (category && category !== "Категория") {
       data = data.filter((p) => p.categoryName === category);
-    if (supplier && supplier !== "Поставщики")
+    }
+    if (supplier && supplier !== "Поставщики") {
       data = data.filter((p) => p.supplierName === supplier);
-    if (warehouse && warehouse !== "Склады")
+    }
+    if (warehouse && warehouse !== "Склады") {
       data = data.filter((p) => p.warehouseName === warehouse);
-    if (office && office !== "Офисы")
+    }
+    if (office && office !== "Офисы") {
       data = data.filter((p) => p.office === office);
-    if (model && model !== "Модели")
+    }
+    if (model && model !== "Модели") {
       data = data.filter((p) => p.model === model);
-    if (user && user !== "Пользователи")
+    }
+    if (user && user !== "Пользователи") {
       data = data.filter((p) => p.user === user);
-    if (search)
+    }
+    if (search) {
       data = data.filter((p) =>
         p.name.toLowerCase().includes(search.toLowerCase())
       );
+    }
+
     setFiltered(data);
-    // Сброс страницы только если текущая страница вне диапазона
     if (currentPage > Math.ceil(data.length / ITEMS_PER_PAGE)) {
       setCurrentPage(1);
     }
-  }, [allEquipment, category, supplier, warehouse, office, model, user, search]);
+  }, [allEquipment, category, supplier, warehouse, office, model, user, search, currentPage]);
 
-  // Сброс фильтров
-  const clearFilters = () => {
+  const clearFilters = useCallback(() => {
     setCategory("Категория");
     setSupplier("Поставщики");
     setWarehouse("Склады");
@@ -332,7 +408,7 @@ export default function EquipmentPage() {
     setModel("Модели");
     setUser("Пользователи");
     setSearch("");
-  };
+  }, []);
 
   // Пагинация
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
@@ -341,8 +417,8 @@ export default function EquipmentPage() {
     currentPage * ITEMS_PER_PAGE
   );
 
-  // Для CardList
-  const cardItems = paginated.map((p: any) => ({
+  // Преобразование данных для CardList
+  const cardItems = paginated.map((p) => ({
     id: p.id,
     image: "/plug_img.png",
     title: p.name,
@@ -354,46 +430,6 @@ export default function EquipmentPage() {
     type: "Оборудование",
   }));
 
-  // Получение списков для фильтров
-  const [officeList, setOfficeList] = useState<string[]>(["Офисы"]);
-
-  useEffect(() => {
-    // Получаем список офисов для фильтра
-    const offices = getOfficeNamesFromStorage();
-    setOfficeList(["Офисы", ...offices]);
-  }, [allEquipment]);
-
-  const categoryList = [
-    "Категория",
-    ...Array.from(
-      new Set(allEquipment.map((p: any) => p.categoryName).filter(Boolean))
-    ),
-  ];
-  const supplierList = [
-    "Поставщики",
-    ...Array.from(
-      new Set(allEquipment.map((p: any) => p.supplierName).filter(Boolean))
-    ),
-  ];
-  const warehouseList = [
-    "Склады",
-    ...Array.from(
-      new Set(allEquipment.map((p: any) => p.warehouseName).filter(Boolean))
-    ),
-  ];
-  const modelList = [
-    "Модели",
-    ...Array.from(
-      new Set(allEquipment.map((p: any) => p.model).filter(Boolean))
-    ),
-  ];
-  const userList = [
-    "Пользователи",
-    ...Array.from(
-      new Set(allEquipment.map((p: any) => p.user).filter(Boolean))
-    ),
-  ];
-
   return (
     <div className="min-h-screen p-4 max-w-7xl mx-auto">
       <header className="mb-8">
@@ -401,7 +437,7 @@ export default function EquipmentPage() {
           <h1 className="text-2xl font-bold text-gray-900">Оборудование</h1>
           <Link
             href="/equipment/add"
-            className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+            className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
           >
             <PlusIcon className="h-5 w-5 mr-2" />
             Добавить оборудование
@@ -451,7 +487,6 @@ export default function EquipmentPage() {
             />
           </div>
           <CardList items={cardItems} />
-          {/* Пагинация */}
           {totalPages > 1 && (
             <div className="flex justify-center mt-4 gap-2">
               {Array.from({ length: totalPages }, (_, idx) => (
@@ -472,5 +507,42 @@ export default function EquipmentPage() {
         </section>
       </div>
     </div>
+  );
+}
+
+// --- Основная страница с параметрами поиска ---
+export default function EquipmentPage() {
+  // Получаем данные для фильтров и оборудования до Suspense
+  const [allEquipment, setAllEquipment] = useState<EquipmentItem[]>([]);
+  const [officeList, setOfficeList] = useState<string[]>(["Офисы"]);
+
+  useEffect(() => {
+    setAllEquipment(getEquipmentFromStorage());
+    setOfficeList(["Офисы", ...getOfficeNamesFromStorage()]);
+  }, []);
+
+  // Получаем списки для фильтров
+  const getUniqueValues = (key: keyof EquipmentItem) => [
+    ...new Set(allEquipment.map((p) => p[key]).filter(Boolean) as string[]),
+  ];
+
+  const categoryList = ["Категория", ...getUniqueValues("categoryName")];
+  const supplierList = ["Поставщики", ...getUniqueValues("supplierName")];
+  const warehouseList = ["Склады", ...getUniqueValues("warehouseName")];
+  const modelList = ["Модели", ...getUniqueValues("model")];
+  const userList = ["Пользователи", ...getUniqueValues("user")];
+
+  return (
+    <Suspense fallback={<div>Загрузка...</div>}>
+      <EquipmentPageWithSearchParams
+        allEquipment={allEquipment}
+        officeList={officeList}
+        categoryList={categoryList}
+        supplierList={supplierList}
+        warehouseList={warehouseList}
+        modelList={modelList}
+        userList={userList}
+      />
+    </Suspense>
   );
 }

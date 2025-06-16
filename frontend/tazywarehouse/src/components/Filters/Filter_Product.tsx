@@ -1,6 +1,6 @@
 "use client";
 
-import { StringArraySelect } from "../SelectBar";
+import { StringArraySelect, StringArraySelectProps } from "../SelectBar";
 
 export default function Filter({
   categoryList = [],

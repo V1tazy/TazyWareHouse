@@ -121,8 +121,6 @@ const fetchDocuments = async () => {
           totalPages={totalPages}
           onPageChange={handlePageChange}
           className="mt-4"
-          showFirstLast
-          maxVisiblePages={5}
         />
       </div>
     </div>

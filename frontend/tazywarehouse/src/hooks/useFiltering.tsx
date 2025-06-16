@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-interface UseFilteringProps<T> {
+interface UseFilteringProps<T extends object> {
   data: T[];
   initialSearchTerm?: string;
   initialTypeFilter?: string;
@@ -9,7 +9,7 @@ interface UseFilteringProps<T> {
   itemsPerPage?: number;
 }
 
-export function useFiltering<T>({
+export function useFiltering<T extends object>({
   data,
   initialSearchTerm = "",
   initialTypeFilter = "Все",

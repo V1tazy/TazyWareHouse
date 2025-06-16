@@ -130,8 +130,6 @@ export default function OfficePage() {
           totalPages={totalPages}
           onPageChange={handlePageChange}
           className="mt-4"
-          showFirstLast
-          maxVisiblePages={5}
         />
       </div>
     </div>

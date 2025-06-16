@@ -81,22 +81,22 @@ export default function EquipmentEditPage() {
   // Получаем уникальные значения для селектов из mockEquipment + дефолтные
   const allEquipment = typeof window !== "undefined" ? getEquipmentFromStorage() : mockEquipment;
   const typeOptions = Array.from(
-    new Set([...DEFAULT_CATEGORIES, ...allEquipment.map(e => e.categoryName).filter(Boolean)])
+    new Set([...DEFAULT_CATEGORIES, ...allEquipment.map((e: any) => e.categoryName).filter(Boolean)])
   );
   const supplierOptions = Array.from(
-    new Set([...DEFAULT_SUPPLIERS, ...allEquipment.map(e => e.supplierName).filter(Boolean)])
+    new Set([...DEFAULT_SUPPLIERS, ...allEquipment.map((e: any) => e.supplierName).filter(Boolean)])
   );
   const meansureOptions = Array.from(
-    new Set([...DEFAULT_MEASURE, ...allEquipment.map(e => e.meansureName).filter(Boolean)])
+    new Set([...DEFAULT_MEASURE, ...allEquipment.map((e: any) => e.meansureName).filter(Boolean)])
   );
   const officeOptions = Array.from(
-    new Set([...DEFAULT_OFFICES, ...allEquipment.map(e => e.office).filter(Boolean)])
+    new Set([...DEFAULT_OFFICES, ...allEquipment.map((e: any) => e.office).filter(Boolean)])
   );
   const modelOptions = Array.from(
-    new Set([...DEFAULT_MODELS, ...allEquipment.map(e => e.model).filter(Boolean)])
+    new Set([...DEFAULT_MODELS, ...allEquipment.map((e: any) => e.model).filter(Boolean)])
   );
   const userOptions = Array.from(
-    new Set([...DEFAULT_USERS, ...allEquipment.map(e => e.user).filter(Boolean)])
+    new Set([...DEFAULT_USERS, ...allEquipment.map((e: any) => e.user).filter(Boolean)])
   );
 
   // Загрузка данных оборудования по id

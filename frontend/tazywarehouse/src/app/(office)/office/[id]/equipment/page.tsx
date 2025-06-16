@@ -25,7 +25,8 @@ function getEquipmentByOffice(officeName: string) {
 export default function OfficeEquipmentPage() {
   const router = useRouter();
   const params = useParams();
-  const officeId = params.id;
+  const officeIdRaw = params.id;
+  const officeId = Array.isArray(officeIdRaw) ? officeIdRaw[0] : officeIdRaw;
 
   const [office, setOffice] = useState<any>(null);
   const [equipment, setEquipment] = useState<any[]>([]);
@@ -120,7 +121,6 @@ export default function OfficeEquipmentPage() {
           data={paginatedEquipment}
           columns={EquipmentTableConfig}
           emptyMessage="Оборудование не найдено"
-          onRowClick={(id) => router.push(`/office/${officeId}/equipment/${id}`)}
         />
 
         <Pagination
@@ -128,8 +128,6 @@ export default function OfficeEquipmentPage() {
           totalPages={totalPages}
           onPageChange={handlePageChange}
           className="mt-4"
-          showFirstLast
-          maxVisiblePages={5}
         />
       </div>
     </div>

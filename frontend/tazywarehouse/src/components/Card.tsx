@@ -1,8 +1,15 @@
 "use client"; // Client component for interactivity
 
-import { ICard } from "@/@libs/models/ICard";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+
+export interface ICard {
+  id: string;
+  image: string;
+  title: string;
+  details: { label: string; value: string }[];
+  type: string;
+}
 
 export default function Card({ id, image, title, details, type }: ICard) {
   const router = useRouter();

@@ -1,17 +1,16 @@
-import { authConfig } from "@/config/AuthConfig";
+
 import { getServerSession } from "next-auth";
 import ActivitiesPage from "./(functional)/_activies/page";
 import TaskPage from "./(functional)/_tasks/page";
 import StatsPage from "./(functional)/_stats/page";
 
 export default async function Home() {
-  const session = await getServerSession(authConfig);
 
   return (
     <div className="min-h-screen p-4 max-w-7xl mx-auto">
       {/* Заголовок с приветствием */}
       <header className="mb-8">
-        <h1 className="text-2xl font-bold mb-2">Добро пожаловать, {session?.user?.name || session?.user?.email}!</h1>
+        <h1 className="text-2xl font-bold mb-2">Добро пожаловать!</h1>
         <p className="text-gray-600">Ваша рабочая панель на {new Date().toLocaleDateString('ru-RU')}</p>
       </header>
       

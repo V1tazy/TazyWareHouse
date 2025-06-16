@@ -28,7 +28,8 @@ const mockTransfers = [
 export default function OfficeDetailsPage() {
   const router = useRouter();
   const params = useParams();
-  const officeId = params.id;
+  const officeIdRaw = params.id;
+  const officeId = Array.isArray(officeIdRaw) ? officeIdRaw[0] : officeIdRaw;
 
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
