@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TazyWareHouse.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96a5dc276aa7148ee6c2bb029148ceabf9ca7675")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+885c5dad3ce39f6593f04eced583d01c78efd49b")]
 [assembly: System.Reflection.AssemblyProductAttribute("TazyWareHouse.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TazyWareHouse.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

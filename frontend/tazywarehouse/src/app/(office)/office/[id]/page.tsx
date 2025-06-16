@@ -1,10 +1,6 @@
 "use client";
 import { useRouter, useParams } from "next/navigation";
 import { ArrowLeftIcon, PencilIcon, TrashIcon, PrinterIcon } from "@heroicons/react/24/outline";
-import { Tab } from "@headlessui/react";
-import { TransferHistory } from "@/components/TranferHistory/Component";
-import { Table } from "@/components/Table/Table";
-import { EquipmentTableConfig } from "@/config/TableConfig/EquipmentTableConfig";
 import { useFiltering } from "@/hooks/useFiltering";
 import { useEffect, useState } from "react";
 
@@ -158,40 +154,6 @@ export default function OfficeDetailsPage() {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow">
-        <Tab.Group>
-          <Tab.List className="flex space-x-1 border-b border-gray-200">
-            <Tab
-              className={({ selected }) =>
-                `px-4 py-2 text-sm font-medium ${selected ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`
-              }
-            >
-              Оборудование ({equipment.length})
-            </Tab>
-            <Tab
-              className={({ selected }) =>
-                `px-4 py-2 text-sm font-medium ${selected ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`
-              }
-            >
-              История перемещений ({mockTransfers.length})
-            </Tab>
-          </Tab.List>
-          <Tab.Panels className="mt-4">
-            <Tab.Panel>
-              <Table
-                title="Список оборудования"
-                data={paginatedEquipment}
-                columns={EquipmentTableConfig}
-                emptyMessage="Оборудование не найдено"
-                onRowClick={(id) => router.push(`/office/${officeId}/equipment/${id}`)}
-              />
-            </Tab.Panel>
-            <Tab.Panel>
-              <TransferHistory data={mockTransfers} />
-            </Tab.Panel>
-          </Tab.Panels>
-        </Tab.Group>
       </div>
-    </div>
   );
 }
